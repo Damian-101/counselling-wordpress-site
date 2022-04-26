@@ -10,6 +10,8 @@ Abstract class Add_Customer_Options{
         add_action("init",[$this,"create_custom_post_type"]);
         add_action("add_meta_boxes",[$this,'add_custom_fields'],2);
         add_action("save_post",[$this,"save_fields"]);
+        add_action('save_post',array($this,"set_post_title"));
+        add_action('save_post',array($this,"save_fields_to_database"));
     }
 
     function create_custom_post_type() {
@@ -81,5 +83,6 @@ Abstract class Add_Customer_Options{
     //show custom fields
     Abstract function custom_fields($post);
     Abstract function save_fields($post_id);
-
+    Abstract function set_post_title($post_id);
+    Abstract function save_fields_to_database($post_id);
 }
