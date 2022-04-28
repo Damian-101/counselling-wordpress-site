@@ -19,10 +19,11 @@ const insertPopup = () => {
     const iframeInsertLocation = document.getElementById("wpbody")
     //get overlay insert location
     const overlayInsertLocation = document.getElementById("wpwrap")
-    if(iframeInsertLocation){
+    const prevImg = document.getElementById("prevImg")
+    if(prevImg && iframeInsertLocation){
         iframeInsertLocation.innerHTML = '<div class="iframe-wraper dis-none" id="iframe"><iframe src="media-upload.php?type=image&amp;TB_iframe=true" class="popup-media-iframe"></iframe></div>' + iframeInsertLocation.innerHTML
     }
-    if(overlayInsertLocation){
+    if(prevImg && overlayInsertLocation){
         overlayInsertLocation.innerHTML = '<div class="overlay dis-none" id="overlay"></div>' + overlayInsertLocation.innerHTML
     }
 }

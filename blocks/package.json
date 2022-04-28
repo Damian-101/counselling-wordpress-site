@@ -4,8 +4,13 @@
   "description": "wordpress blocks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@wordpress/icons": "^8.3.0",
+    "@wordpress/scripts": "^22.5.0"
+  }
 }

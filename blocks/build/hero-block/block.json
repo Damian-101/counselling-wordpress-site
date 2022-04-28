@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "cs/hero-block",
+    "title": "Hero Block",
+    "category": "text",
+    "icon": "star",
+    "attributes":{
+        "backgroundImage":{
+            "type":"object"
+        },
+        "heroOverlayOpactiy":{
+            "type":"number",
+            "default":40
+        },
+        "heroHeading":{
+            "type":"string",
+            "default":"A Take A Journey With Us For A Healthy Mind"
+        }
+    }
+}

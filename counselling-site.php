@@ -17,3 +17,7 @@ require_once(PLUGIN_DIR_PATH . "classes/customer-options/controller/class-main-c
 
 // routes
 require_once(PLUGIN_DIR_PATH . "routes/class-customer-options-route.php");
+
+
+//blocks
+require_once(PLUGIN_DIR_PATH . "blocks/index.php");

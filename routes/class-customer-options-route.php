@@ -10,6 +10,7 @@ class Customer_Options_Route {
         register_rest_route( 'cs/v2', '/customer_options', array(
           'methods' => 'GET',
           'callback' => [$this,'add_route'],
+          'permission_callback' => '__return_true'
         ) );
       }
     function add_route(WP_REST_Request $data){
