@@ -15,7 +15,7 @@ class Customer_Options_Route {
       }
     function add_route(WP_REST_Request $data){
       $convertToJson = Manage_Customer_Options::values();
-      return $convertToJson;
+      return json_decode($convertToJson);
     }
     
 }

@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",
-    "start": "wp-scripts start"
+    "start": "wp-scripts start",
+    "test": "jest --watchAll --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^27.4.1",
     "@wordpress/icons": "^8.3.0",
-    "@wordpress/scripts": "^22.5.0"
+    "@wordpress/scripts": "^22.5.0",
+    "dompurify": "^2.3.8",
+    "jest": "^28.0.3",
+    "react-loading-screen": "^0.0.17",
+    "react-spinners": "^0.11.0"
   }
 }

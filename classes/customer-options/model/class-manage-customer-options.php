@@ -22,18 +22,17 @@ class Manage_Customer_Options{
             $sql = "CREATE TABLE cs_customer_options(
                 id int AUTO_INCREMENT PRIMARY KEY,
                 PostId int NOT NULL UNIQUE,
-                OptionName varchar(255) NOT NULL,
-                OptionImageUrl varchar(255) NOT NULL
+                OptionName varchar(255) NOT NULL
             )";
             $results = $wpdb->get_results($sql,ARRAY_A);
         }
      }
 
 
-     static public function updateTheDatabase($postId,$optionName,$OptionImageUrl){
+     static public function updateTheDatabase($postId,$optionName){
         global $wpdb;
-        if($postId && $optionName && $OptionImageUrl){
-            $sql = "INSERT INTO cs_customer_options (PostId,OptionName,OptionImageUrl) VALUES ('$postId','$optionName','$OptionImageUrl') ON DUPLICATE KEY UPDATE OptionName = VALUES(optionName),  OptionImageUrl = VALUES(OptionImageUrl) ";
+        if($postId && $optionName){
+            $sql = "INSERT INTO cs_customer_options (PostId,OptionName) VALUES ('$postId','$optionName') ON DUPLICATE KEY UPDATE OptionName = VALUES(optionName)";
             $results = $wpdb->get_results($sql,ARRAY_A);   
         }
      }
@@ -48,7 +47,19 @@ class Manage_Customer_Options{
          * covert to json
          */
         $results = json_encode($results,JSON_NUMERIC_CHECK);
-        print_r($results);
+        return $results;
+     }
+
+
+     /**
+      * Remove Row
+      */
+     static public function deleteValue($postId) {
+        global $wpdb;
+        if($postId){
+            $sql = "DELETE FROM cs_customer_options WHERE PostId = $postId";
+            $results = $wpdb->get_results($sql,ARRAY_A);  
+        }
      }
 
      static public function deinitializeDatabase(){

@@ -1,7 +1,7 @@
-import { Toolbar, ToolbarButton, ToolbarGroup } from '@wordpress/components';
+import {ToolbarButton, ToolbarGroup } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
 import { Button } from '@wordpress/components';
-const HeroSectionToolbar = ({props}) => {
+const Toolbar = ({props}) => {
     const ALLOWED_MEDIA_TYPES = ['image'];
 
     // get image data 
@@ -28,4 +28,4 @@ const HeroSectionToolbar = ({props}) => {
     )
 }
 
-export default HeroSectionToolbar
+export default Toolbar

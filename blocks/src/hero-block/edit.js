@@ -1,7 +1,8 @@
 import "./css/index.scss"
 import {useBlockProps,RichText,InnerBlocks } from "@wordpress/block-editor";
-import HeroSectionToolbar from "./customize/toolbar";
-import HeroSidebar from "./customize/sidebar";
+import Sidebar from "./customize/sidebar";
+import Toolbar from "./customize/toolbar";
+import "../index.scss"
 const edit = (props) => {
     const blockprops = useBlockProps()
     const backgroundImage = props.attributes.backgroundImage
@@ -15,8 +16,8 @@ const edit = (props) => {
     ]
     return (
         <>
-            <HeroSidebar props = {props}/>
-            <HeroSectionToolbar props = {props}/>
+            <Sidebar props = {props}/>
+            <Toolbar props = {props}/>
             <div {...blockprops}>
                 <section class="cm-hero__content" id="cm_hero">
                     <div class="container cm-hero__content-wraper">

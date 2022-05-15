@@ -12,6 +12,7 @@ Abstract class Add_Customer_Options{
         add_action("save_post",[$this,"save_fields"]);
         add_action('save_post',array($this,"set_post_title"));
         add_action('save_post',array($this,"save_fields_to_database"));
+        add_action('delete_post',array($this,"delete_customer_option"));
     }
 
     function create_custom_post_type() {
@@ -85,4 +86,5 @@ Abstract class Add_Customer_Options{
     Abstract function save_fields($post_id);
     Abstract function set_post_title($post_id);
     Abstract function save_fields_to_database($post_id);
+    Abstract function delete_customer_option($post_id);
 }

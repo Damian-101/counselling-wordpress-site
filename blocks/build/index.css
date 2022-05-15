@@ -6,7 +6,7 @@
   background-color: rgb(29, 29, 29);
   display: flex;
   align-items: flex-end;
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
   position: relative;
   padding-top: 14rem;
   width: 100%;
@@ -59,17 +59,24 @@
   }
 
   .cm-hero__heading {
-    max-width: 700px;
+    max-width: 754px;
   }
 }
 @media screen and (min-width: 1400px) {
   .cm-hero__heading {
-    max-width: 800px;
+    max-width: 950px;
   }
 }
-/*!********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/primary-btn/scss/index.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.sidebar-label {
+  padding: 1.2rem 0;
+  display: block;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/primary-btn-block/scss/index.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
 .btn-content {
   padding: 1.8rem 3rem;
   border-radius: 150px;
@@ -80,6 +87,10 @@
   color: #313131;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.49, 0.025, 0.49, 1);
+  margin-top: var(--spacing-400);
+}
+.btn-content div {
+  white-space: nowrap !important;
 }
 
 .btn-editor {
@@ -88,9 +99,9 @@
 
 @media screen and (min-width: 1030px) {
   .btn-content {
-    padding: 2.1rem 3.2rem;
+    padding: 2.6rem 3.2rem;
     min-width: 140px;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
   }
 }
 .btn-content:hover {
@@ -101,13 +112,225 @@
   color: #313131;
 }
 
-.btn-content .btn--light {
+.btn-content.btn--light {
   background-color: rgb(231, 231, 231);
 }
 
-.btn-content .btn--dark {
+.btn-content.btn--dark {
   background-color: rgb(20, 20, 20);
   color: rgb(255, 255, 255);
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/options-block-sm/scss/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+.sm-option-block-sm__content {
+  width: 100%;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sm-option-block-sm__top {
+  background-color: rgb(38, 38, 38);
+  width: 100%;
+  min-height: 23.8rem;
+  position: relative;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+.sm-option-block-sm__top img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100% !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.sm-option-block-sm__bottom {
+  padding: 5rem 3rem;
+  background-color: #358555;
+  border-radius: 0 0 1.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  min-height: 200.567px;
+  height: 100%;
+}
+.sm-option-block-sm__bottom * {
+  margin: 0;
+  line-height: 106%;
+  font-weight: 500;
+  max-width: 400px;
+}
+
+@media screen and (min-width: 1030px) {
+  .sm-option-block-sm__top {
+    min-height: 25.8rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .sm-option-block-sm__top {
+    min-height: 38.8rem;
+  }
+
+  .sm-option-block-sm__bottom {
+    min-height: 215.4px;
+  }
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/customer-options-block/scss/index.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+.full-width-error-msg {
+  background-color: #f6f6f6;
+  border-radius: var(--border-radius);
+  border: 1rem solid var(--error-color);
+  padding: 2rem;
+}
+
+.error {
+  color: var(--error-color);
+  margin-bottom: 2.5rem;
+}
+
+.error-msg {
+  max-width: 523px;
+  margin-bottom: 2rem;
+}
+
+.error-heading {
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 1400px) {
+  .full-width-error-msg {
+    padding: 4rem;
+  }
+}
+.customer-options-block-content {
+  background-color: #f6f6f6;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  min-height: 369px;
+  border: 1rem solid rgb(172, 172, 172);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-options-block {
+  margin-top: var(--spacing-500);
+}
+
+.wp-block-cs-customer-options-block {
+  margin-top: var(--spacing-500);
+}
+
+.wp-block-cs-option-block-lg {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  margin-top: var(--spacing-500);
+}
+
+.wp-block-cs-option-block-sm {
+  margin-top: var(--spacing-500);
+}
+
+@media screen and (min-width: 867px) {
+  .customer-options-block .block-editor-block-list__layout {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+  }
+
+  .customer-options-block-wraper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+  }
+
+  .wp-block-cs-option-block-sm {
+    margin-top: 0;
+  }
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/options-block-lg/scss/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+.options-block-lg {
+  max-width: 1723px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgb(96, 96, 96);
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: var(--border-radius);
+}
+
+.options-block-lg__left {
+  width: 100%;
+  padding: 5rem 4rem;
+}
+.options-block-lg__left h2 {
+  max-width: 600px;
+}
+
+.options-block-lg__right {
+  width: 100%;
+  background-color: rgb(38, 38, 38);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  min-height: 326px;
+}
+
+.options-block-lg__right img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+@media screen and (min-width: 765px) {
+  .options-block-lg {
+    display: flex;
+    flex-direction: unset;
+  }
+
+  .options-block-lg__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 50%;
+    min-height: 293px;
+    padding: 2rem 2rem 4rem 4rem;
+  }
+
+  .options-block-lg__right {
+    width: 50%;
+    height: auto;
+  }
+}
+@media screen and (min-width: 1030px) {
+  .options-block-lg__left {
+    min-height: 393px;
+    padding: 2rem 2rem 5rem 5rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .options-block-lg__left {
+    min-height: 593px;
+    padding: 2rem 2rem 8rem 8rem;
+  }
+}
+@media screen and (min-width: 765px) {
+  .options-block-lg__right {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
 }
 
 /*# sourceMappingURL=index.css.map*/

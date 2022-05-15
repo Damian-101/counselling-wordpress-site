@@ -8,6 +8,10 @@
     color: #313131;
     cursor:pointer;
     transition: all 0.3s cubic-bezier(0.49, 0.025, 0.49, 1);
+    margin-top: var(--spacing-400);
+    div{
+        white-space: nowrap !important;
+    }
 }
 
 .btn-editor{
@@ -16,9 +20,9 @@
 
 @media screen and (min-width:1030px){
     .btn-content{
-        padding: 2.1rem 3.2rem;
+        padding: 2.6rem 3.2rem;
         min-width: 140px;
-        font-size: 1.7rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -39,16 +43,12 @@
 ////////////////////////////////////
 
 //Light
-.btn-content{
-    .btn--light{
-        background-color: rgb(231, 231, 231);
-    }
+.btn-content.btn--light{
+    background-color: rgb(231, 231, 231);
 }
 
-.btn-content{
-    //Dark
-    .btn--dark{
-        background-color: rgb(20, 20, 20);
-        color: rgb(255, 255, 255);
-    }
+//Dark
+.btn-content.btn--dark{
+    background-color: rgb(20, 20, 20);
+    color: rgb(255, 255, 255);
 }

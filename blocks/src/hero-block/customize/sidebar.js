@@ -1,6 +1,6 @@
 import {InspectorControls} from '@wordpress/block-editor';
 import {PanelBody,RangeControl } from '@wordpress/components';
-const HeroSidebar = ({props}) => {
+const Sidebar = ({props}) => {
     const heroOverlayOpactiy = props.attributes.heroOverlayOpactiy
     const setOverlayOpacity = (value) => {
         props.setAttributes({heroOverlayOpactiy:value})
@@ -22,4 +22,4 @@ const HeroSidebar = ({props}) => {
     )
 }
 
-export default HeroSidebar
+export default Sidebar

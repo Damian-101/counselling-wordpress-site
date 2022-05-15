@@ -1,0 +1,9 @@
+{
+    "apiVersion": 2,
+    "name": "cs/customer-options-block",
+    "title": "Customer Option Block",
+    "category": "text",
+    "icon": "star",
+    "attributes":{
+    }
+}

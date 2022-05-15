@@ -1,0 +1,21 @@
+{
+    "apiVersion": 2,
+    "name": "cs/option-block-lg",
+    "title": "Option Block Lg",
+    "category": "layout",
+    "icon": "star",
+    "attributes":{
+        "optionImg":{
+            "type":"object"
+        },
+        "optionName":{
+            "type":"string"
+        },
+        "optionBgColor":{
+            "type":"string"
+        },
+        "textColor":{
+            "type":"string"
+        }
+    }
+}
