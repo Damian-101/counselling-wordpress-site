@@ -5,6 +5,7 @@ class Plugin_Activate{
     }
     function activate(){
         Manage_Customer_Options::initializeDatabase();
+        Manage_Counselors::initializeDatabase();
     }
 }
 

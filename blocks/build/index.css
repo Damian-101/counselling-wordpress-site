@@ -93,6 +93,10 @@
   white-space: nowrap !important;
 }
 
+.secondary--btn {
+  margin-left: 2rem;
+}
+
 .btn-editor {
   cursor: text;
 }
@@ -100,7 +104,7 @@
 @media screen and (min-width: 1030px) {
   .btn-content {
     padding: 2.6rem 3.2rem;
-    min-width: 140px;
+    min-width: 190px;
     font-size: 2.2rem;
   }
 }
@@ -179,86 +183,6 @@
     min-height: 215.4px;
   }
 }
-/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/customer-options-block/scss/index.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************/
-.full-width-error-msg {
-  background-color: #f6f6f6;
-  border-radius: var(--border-radius);
-  border: 1rem solid var(--error-color);
-  padding: 2rem;
-}
-
-.error {
-  color: var(--error-color);
-  margin-bottom: 2.5rem;
-}
-
-.error-msg {
-  max-width: 523px;
-  margin-bottom: 2rem;
-}
-
-.error-heading {
-  margin-bottom: 2rem;
-}
-
-@media screen and (min-width: 1400px) {
-  .full-width-error-msg {
-    padding: 4rem;
-  }
-}
-.customer-options-block-content {
-  background-color: #f6f6f6;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  min-height: 369px;
-  border: 1rem solid rgb(172, 172, 172);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.customer-options-block {
-  margin-top: var(--spacing-500);
-}
-
-.wp-block-cs-customer-options-block {
-  margin-top: var(--spacing-500);
-}
-
-.wp-block-cs-option-block-lg {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1/4;
-  margin-top: var(--spacing-500);
-}
-
-.wp-block-cs-option-block-sm {
-  margin-top: var(--spacing-500);
-}
-
-@media screen and (min-width: 867px) {
-  .customer-options-block .block-editor-block-list__layout {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 2.6rem;
-  }
-
-  .customer-options-block-wraper {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 2.6rem;
-  }
-
-  .wp-block-cs-option-block-sm {
-    margin-top: 0;
-  }
-}
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/options-block-lg/scss/index.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************/
@@ -270,6 +194,7 @@
   display: flex;
   flex-direction: column-reverse;
   border-radius: var(--border-radius);
+  margin-top: var(--spacing-500);
 }
 
 .options-block-lg__left {
@@ -330,6 +255,28 @@
 @media screen and (min-width: 765px) {
   .options-block-lg__right {
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/three-column-options-block/scss/index.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+@media screen and (min-width: 867px) {
+  .cs-three-column-options-block__content .block-editor-block-list__layout {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+    margin-top: var(--spacing-500);
+  }
+
+  .cs-three-column-options-block__wraper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+    margin-top: var(--spacing-500);
   }
 }
 

@@ -1,7 +1,7 @@
 {
     "apiVersion": 2,
     "name": "cs/option-block-lg",
-    "title": "Option Block Lg",
+    "title": "Full Width Option Block",
     "category": "layout",
     "icon": "star",
     "attributes":{

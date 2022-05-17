@@ -2,6 +2,7 @@ import "./scss/index.scss"
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import Toolbar from "./customize/toolbar"
 import Sidebar from "./customize/sidebar"
+import {useEffect} from "react"
 const Edit = (props) => {
     const blockprops = useBlockProps()
     //attributes
@@ -9,12 +10,23 @@ const Edit = (props) => {
     const optionImg = props.attributes.optionImg
     const optionBgColor = props.attributes.optionBgColor
     const textColor = props.attributes.textColor
+    const attributes = {optionName:optionName,optionImg:optionImg,optionBgColor:optionBgColor,textColor:textColor}
+        // set attributes to localStorage 
+        useEffect(() => {
+            let customerOptions = JSON.parse(localStorage.getItem('customerOptions'))
+            if(customerOptions){
+                customerOptions = [...customerOptions,attributes]
+            }else{
+                customerOptions = [attributes]
+            }
+            localStorage.setItem('customerOptions',JSON.stringify(customerOptions))
+        },[optionName,optionImg,optionBgColor,textColor])
     return (
         <>
             <Sidebar props={props} />
             <Toolbar props={props} />
             <div {...blockprops}>
-                <div className="sm-option-block-sm__content">
+                <div className="sm-option-block-sm__content" data-option-name="options block lg">
                     <div className="sm-option-block-sm__top">
                         {optionImg &&
                             <img src={optionImg.url} />
@@ -23,7 +35,7 @@ const Edit = (props) => {
                     <div className="sm-option-block-sm__bottom" style={{backgroundColor:optionBgColor,color:textColor}}>
                         <RichText
                             tagName="h4"
-                            placeholder="Rich Text"
+                            placeholder="Option Name"
                             value={optionName}
                             onChange={
                                 value => props.setAttributes({ optionName: value })

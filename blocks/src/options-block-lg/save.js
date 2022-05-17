@@ -7,6 +7,7 @@ const save = (props) => {
     const blockProps = useBlockProps.save();
     return(
         <div {...blockProps}>
+            <div className="container">
                 <section className="options-block-lg" style={{backgroundColor:optionBgColor}}>
                     <div className="options-block-lg__left" style={{color:textColor}}>
                     <RichText.Content tagName="h2" value={ optionName } />
@@ -18,6 +19,7 @@ const save = (props) => {
                         }
                     </div>
                 </section>
+            </div>
         </div>
     )
 }

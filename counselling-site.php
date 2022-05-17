@@ -13,7 +13,7 @@ require_once(PLUGIN_DIR_PATH . "classes/class-plugin-activate.php");
 
 
 // contollers 
-require_once(PLUGIN_DIR_PATH . "classes/customer-options/controller/class-main-controller.php");
+require_once(PLUGIN_DIR_PATH . "controller/class-main-controller.php");
 
 // routes
 require_once(PLUGIN_DIR_PATH . "routes/class-customer-options-route.php");

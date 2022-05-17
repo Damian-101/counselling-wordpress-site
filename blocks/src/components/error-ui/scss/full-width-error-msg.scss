@@ -1,0 +1,24 @@
+.full-width-error-msg{
+    background-color: #f6f6f6;
+    border-radius: var(--border-radius);
+    border: 1rem solid var(--error-color);
+    padding: 2rem;
+}
+.error{
+    color: var(--error-color);
+    margin-bottom: 2.5rem;
+}
+.error-msg{
+    max-width: 523px;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+.error-heading{
+    margin-bottom: 2rem;
+}
+
+@media screen and (min-width:1400px){
+    .full-width-error-msg{
+        padding: 4rem;
+    } 
+}

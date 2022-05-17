@@ -4,15 +4,22 @@ import { css } from "@emotion/react";
 import CircleLoader from "react-spinners/ClipLoader";
 import FullWidthErrorMsg from "../components/error-ui/full-width-error-msg"
 import "./scss/index.scss"
-const Edit = () => {
+const Edit = (props) => {
     const [haveOptions, setHaveOptions] = useState(false)
     const [refresh,setRefresh] = useState(false)
     const [data, setData] = useState()
     const [isLoading,setIsLoading] = useState(true)
+    const [isCustomerOptionsChanged,setIsCustomerOptionsChanged] = useState(false)
     const [optionsCount, setOptionsCount] = useState(undefined)
+    const [oldOptionsCount,setOldOptionsCount] = useState(undefined)
     const blockprops = useBlockProps()
     const domainName = window.location.origin
     const customerOptionsPageUrl = domainName + "/wp-admin/edit.php?post_type=customer_option"
+    // localStorage.clear()
+    console.log(JSON.parse(localStorage.getItem("customerOptions")))
+    //attributes
+    const oldSavedOptionsCount = props.attributes.oldSavedOptionsCount
+    console.log(oldSavedOptionsCount)
     //fetch customer options data
     const fetchData = async () => {
         const url = domainName + "/wp-json/cs/v2/customer_options";
@@ -32,17 +39,18 @@ const Edit = () => {
         fetchData().then(values => {
             setOptionsInfo(values)
         })
-        // 
     }, [])
 
     useEffect(() => {
         fetchData().then(values => {
             setOptionsInfo(values)
         })
-        console.log("hello")
-        // 
     }, [refresh])
 
+    // get existing option count 
+    const getOldOptionCount = () => {
+        return document.querySelectorAll('[data-option-name]').length
+    }
 
     //check if the options are added in the customer options menu
     const setOptionsInfo = (values) => {
@@ -53,6 +61,21 @@ const Edit = () => {
         } else {
             setHaveOptions(false)
             setData(null)
+        }
+        // check if the options changed 
+        if(oldSavedOptionsCount === 0 && getOldOptionCount() !== values.length){
+            if(getOldOptionCount() !== 0){
+                setOldOptionsCount(values.length)
+            }
+            setIsCustomerOptionsChanged(true)
+        }
+        // if we have old customerOptionsValue saved before
+        console.log(oldSavedOptionsCount,values.length)
+        if(oldSavedOptionsCount !== 0 && oldSavedOptionsCount !== values.length && getOldOptionCount() !== values.length){
+            if(getOldOptionCount() !== 0){
+                setOldOptionsCount(values.length)
+            }
+            setIsCustomerOptionsChanged(true)
         }
     }
 
@@ -100,7 +123,25 @@ const Edit = () => {
             </div>
         )
     }
-
+    
+    //render error msg if the options changed
+    const renderOptionsChangedErrorMsg = () => {
+        const onIgnore = () => {
+            setIsCustomerOptionsChanged(false)
+            setRefresh(!refresh)
+            props.setAttributes({oldSavedOptionsCount:oldOptionsCount})
+        }
+        const onRearrange = () => {
+            
+        }
+        return <FullWidthErrorMsg 
+                    errorHeading = "Customer Options Changed" 
+                    errorMsg = {`Hey,We found that you changed the customer 
+                                options.So if you want to use the changed values hit Rearrange`}
+                    errorBtn={['Ignore',onIgnore]}
+                    errorBtn2={['Rearrange',onRearrange]}
+        />
+    }
     // render add customer options error msg if the there isn't any customer options added 
     const renderOptionsLayout = () => {
         if(optionsCount <= 2){
@@ -112,7 +153,10 @@ const Edit = () => {
     }
 
     const renderUi = () => {
-        if(optionsCount && data){
+        if(optionsCount && data && isCustomerOptionsChanged === true){
+            return renderOptionsChangedErrorMsg()
+        }
+        if(optionsCount && data && isCustomerOptionsChanged === false){
             return(
                 <div className="customer-options-block container">
                     <InnerBlocks template={renderOptionsLayout()}/>
@@ -124,8 +168,8 @@ const Edit = () => {
                         errorMsg = {`Before Using This Component You
                                      Need To Add <a href=${customerOptionsPageUrl}>Customer Options</a>
                                       In the Admin Panel`}
-                        errorBtnClick={onTryAgain}
-                        />
+                        errorBtn={['Try Again',onTryAgain]}
+                    />
         }
     }
     return (

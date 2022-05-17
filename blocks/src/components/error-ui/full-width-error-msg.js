@@ -1,4 +1,5 @@
 import DOMPurify from 'dompurify'
+import "./scss/full-width-error-msg.scss"
 const FullWidthErrorMsg = (props) => {
         const sanitizedErrorMsg = () => ({
             __html:DOMPurify.sanitize(props.errorMsg)
@@ -12,7 +13,11 @@ const FullWidthErrorMsg = (props) => {
                         {/* Customer Options Not Added */}
                     </h4>
                     <h6 className="error-msg" dangerouslySetInnerHTML={sanitizedErrorMsg()}/>
-                    <button className="btn-content" onClick={props.errorBtnClick}>Try Again</button>
+                    <button className="btn-content" onClick={props.errorBtn[1]}>{props.errorBtn[0]}</button>
+                    {
+                        props.errorBtn2 &&
+                        <button className="btn-content btn--dark secondary--btn" onClick={props.errorBtn2[1]}>{props.errorBtn2[0]}</button>
+                    }
                 </div>
             </div>
         )

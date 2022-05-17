@@ -39,7 +39,7 @@ class Customer_Options_Controller extends Add_Customer_Options{
     function custom_fields($post){
         self::$imgUrl = get_post_meta($post->ID,'img-url',true);
         self::$customerOptionName = get_post_meta($post->ID,'customer-option-name',true);
-        Controller::add_view("customer-options","option-name");
+        Controller::add_view("option-name");
     }
 
 }

@@ -14,6 +14,10 @@
     }
 }
 
+.secondary--btn{
+    margin-left: 2rem;
+}
+
 .btn-editor{
     cursor: text;
 }
@@ -21,7 +25,7 @@
 @media screen and (min-width:1030px){
     .btn-content{
         padding: 2.6rem 3.2rem;
-        min-width: 140px;
+        min-width: 190px;
         font-size: 2.2rem;
     }
 }
