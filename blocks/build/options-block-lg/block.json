@@ -16,6 +16,9 @@
         },
         "textColor":{
             "type":"string"
+        },
+        "layoutName":{
+            "type":"string"
         }
     }
 }

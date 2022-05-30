@@ -10,11 +10,12 @@
 }
 .error-msg{
     max-width: 523px;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
     font-weight: 400;
+    color: var(--paragraph-color);
 }
 .error-heading{
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
 }
 
 @media screen and (min-width:1400px){

@@ -6,9 +6,6 @@ const Save = (props) => {
     // redirect settings 
     const opensInNewTab = props.attributes.opensInNewTab
     const url = props.attributes.url
-    const title = props.attributes.title
-
-    console.log(buttonType)
     return(
         <div {...blockProps}>
             <form action={url && url} target = {opensInNewTab ? "__blank" : null}>

@@ -1,22 +1,18 @@
 .image-placeholder{
     background-color: #ddd;
-    width: 230px;
-    height: 188px;
-    border-radius: 1rem;
+    width: 210px;
+    height: 210px;
+    border-radius: 1000px;
     margin-bottom: 2rem;
     display: grid;
     place-items: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
-.add-img{
-    position: absolute;
-    background-color: transparent;
-    padding: 1rem 2rem;
-    border-radius: .5rem;
-    color: #323232;
-    border: 2px dashed #323232;
+.add-img.button{
+    display: block;
     cursor:pointer;
 }
 

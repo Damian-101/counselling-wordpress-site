@@ -22,7 +22,7 @@ class Manage_Counselors{
             $sql = "CREATE TABLE cs_counselors(
                 id int AUTO_INCREMENT PRIMARY KEY,
                 PostId int NOT NULL UNIQUE,
-                OptionName varchar(255) NOT NULL,
+                CounselorName varchar(255) NOT NULL,
                 ImgUrl varchar(255) NOT NULL,
                 Qualification varchar(255) NOT NULL
             )";
@@ -31,11 +31,13 @@ class Manage_Counselors{
      }
 
 
-     static public function updateTheDatabase($postId,$optionName,$imgUrl,$qualification){
+     static public function updateTheDatabase($postId,$counselorName,$imgUrl,$qualification){
         global $wpdb;
-        $imgUrl = "A";
-        if($postId && $optionName && $qualification){
-            $sql = "INSERT INTO cs_counselors (PostId,OptionName,ImgUrl,Qualification) VALUES ('$postId','$optionName','$imgUrl','$qualification') ON DUPLICATE KEY UPDATE OptionName = VALUES(optionName),ImgUrl = VALUES(imgUrl),Qualification = VALUES(qualification)";
+        if($postId && $counselorName && $qualification && $imgUrl){
+            $counselorName = $wpdb->_real_escape($counselorName);
+            $qualification = $wpdb->_real_escape($qualification);
+            $imgUrl = $wpdb->_real_escape($imgUrl);
+            $sql = "INSERT INTO cs_counselors (PostId,CounselorName,ImgUrl,Qualification) VALUES ('$postId','$counselorName','$imgUrl','$qualification') ON DUPLICATE KEY UPDATE CounselorName = VALUES(counselorName),ImgUrl = VALUES(imgUrl),Qualification = VALUES(qualification);";
             $results = $wpdb->get_results($sql,ARRAY_A);   
         }
      }

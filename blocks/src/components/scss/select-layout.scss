@@ -1,0 +1,50 @@
+.cs-select-layout__heading{
+    margin-bottom: 1.5rem !important;
+}
+.cs-select-layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cs-select-layout__select{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8.3rem;
+}
+
+.cs-select-layout .layout:not(:first-child){
+    margin-left: 3rem;
+}
+
+.cs-select-layout .layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cs-select-layout .layout img{
+    border: 2px solid var(--theme-color);
+    margin-bottom: 1rem !important;
+    transition: .05s border ease-in-out;
+}
+
+.cs-select-layout .layout img:hover{
+    border: 2px solid #207C39;
+}
+
+.cs-select-layout__layout-name{
+    font-weight: 300;
+}
+
+.cs-select-layout__help-link{
+    font-weight: 300;
+}
+
+.cs-select-layout__layout-name{
+}
+
+.cs-select-layout__sub-heading{
+    font-weight: 300;
+    margin-bottom: 3.4rem !important;
+}

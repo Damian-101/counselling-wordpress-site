@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react"
 import {useBlockProps,RichText,InnerBlocks } from "@wordpress/block-editor";
-import { css } from "@emotion/react";
-import CircleLoader from "react-spinners/ClipLoader";
 import FullWidthErrorMsg from "../components/error-ui/full-width-error-msg"
 import "./scss/index.scss"
 const Edit = (props) => {

@@ -121,7 +121,7 @@
 }
 
 .btn-content.btn--dark {
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(51, 51, 51);
   color: rgb(255, 255, 255);
 }
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
@@ -133,6 +133,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.wp-block-cs-option-block-sm {
+  margin-top: var(--spacing-500);
 }
 
 .sm-option-block-sm__top {
@@ -190,16 +194,20 @@
   max-width: 1723px;
   margin: 0 auto;
   width: 100%;
-  background-color: rgb(96, 96, 96);
+  background-color: rgb(233, 233, 233);
   display: flex;
   flex-direction: column-reverse;
   border-radius: var(--border-radius);
   margin-top: var(--spacing-500);
 }
+.options-block-lg p {
+  margin-top: 2rem !important;
+  max-width: 497px;
+}
 
 .options-block-lg__left {
   width: 100%;
-  padding: 5rem 4rem;
+  padding: 5rem 3rem;
 }
 .options-block-lg__left h2 {
   max-width: 600px;
@@ -207,9 +215,9 @@
 
 .options-block-lg__right {
   width: 100%;
-  background-color: rgb(38, 38, 38);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   min-height: 326px;
+  position: relative;
 }
 
 .options-block-lg__right img {
@@ -217,9 +225,62 @@
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  position: absolute;
 }
 
+.cs-select-layout__layouts__popup {
+  width: 200px;
+  margin: 2rem;
+  background-color: #fff;
+}
+
+.cs-select-layout__layout-name__selected {
+  font-weight: 500;
+}
+
+.layout--selected {
+  opacity: 40%;
+  cursor: context-menu;
+}
+
+.cs-select-layout__layouts__popup .layout {
+  margin-bottom: 2rem;
+}
+
+.cs-select-layout__layouts__popup .layout img {
+  border: 2px solid var(--theme-color);
+  margin-bottom: 1rem !important;
+  cursor: pointer;
+  transition: 0.05s border ease-in-out;
+}
+
+.cs-select-layout__layouts__popup .layout img:hover {
+  border: 2px solid #207C39;
+}
+
+@media screen and (min-width: 765px) {
+  .options-block-lg.left-text img {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+}
+.options-block-lg.right-text {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 765px) {
+  .options-block-lg.right-text {
+    flex-direction: unset;
+  }
+
+  .options-block-lg.right-text .options-block-lg__right {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+
+  .options-block-lg.right-text img {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+}
 @media screen and (min-width: 765px) {
   .options-block-lg {
     display: flex;
@@ -232,7 +293,7 @@
     justify-content: flex-end;
     width: 50%;
     min-height: 293px;
-    padding: 2rem 2rem 4rem 4rem;
+    padding: 7rem 2rem 7rem 4rem;
   }
 
   .options-block-lg__right {
@@ -242,8 +303,8 @@
 }
 @media screen and (min-width: 1030px) {
   .options-block-lg__left {
-    min-height: 393px;
-    padding: 2rem 2rem 5rem 5rem;
+    min-height: 415px;
+    padding: 7rem 4rem 5rem 5rem;
   }
 }
 @media screen and (min-width: 1400px) {
@@ -257,6 +318,73 @@
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
   }
 }
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/scss/index.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --cs-block-bg-color:#f6f6f6;
+  --cs-block-border-color:rgb(221, 221, 221);
+}
+
+.cs-msg-ui {
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/scss/select-layout.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+.cs-select-layout__heading {
+  margin-bottom: 1.5rem !important;
+}
+
+.cs-select-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cs-select-layout__select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8.3rem;
+}
+
+.cs-select-layout .layout:not(:first-child) {
+  margin-left: 3rem;
+}
+
+.cs-select-layout .layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cs-select-layout .layout img {
+  border: 2px solid var(--theme-color);
+  margin-bottom: 1rem !important;
+  transition: 0.05s border ease-in-out;
+}
+
+.cs-select-layout .layout img:hover {
+  border: 2px solid #207C39;
+}
+
+.cs-select-layout__layout-name {
+  font-weight: 300;
+}
+
+.cs-select-layout__help-link {
+  font-weight: 300;
+}
+
+.cs-select-layout__sub-heading {
+  font-weight: 300;
+  margin-bottom: 3.4rem !important;
+}
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/three-column-options-block/scss/index.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************/
@@ -267,7 +395,6 @@
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 2.6rem;
-    margin-top: var(--spacing-500);
   }
 
   .cs-three-column-options-block__wraper {
@@ -276,7 +403,133 @@
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 2.6rem;
-    margin-top: var(--spacing-500);
+  }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/scss/full-width-error-msg.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.full-width-error-msg {
+  background-color: #f6f6f6;
+  border-radius: var(--border-radius);
+  border: 1rem solid var(--error-color);
+  padding: 2rem;
+}
+
+.error {
+  color: var(--error-color);
+  margin-bottom: 2.5rem;
+}
+
+.error-msg {
+  max-width: 523px;
+  margin-bottom: 2rem !important;
+  font-weight: 400;
+  color: var(--paragraph-color);
+}
+
+.error-heading {
+  margin-bottom: 2rem !important;
+}
+
+@media screen and (min-width: 1400px) {
+  .full-width-error-msg {
+    padding: 4rem;
+  }
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/scss/loading-screen.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --cs-block-bg-color:#f6f6f6;
+  --cs-block-border-color:rgb(221, 221, 221);
+}
+
+.cs-msg-ui {
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+
+.loading-screen {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/counselors-block/scss/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+.cs-counsellors-block {
+  margin: var(--spacing-500) 0;
+}
+
+.cs-counsellors {
+  display: flex;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin-top: var(--spacing-400) !important;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+}
+
+.cs-counsellors__counsellor-img {
+  border-radius: 300px;
+  margin-bottom: 1.4rem;
+  width: 210px;
+  height: 210px;
+}
+
+.cs-counsellors__counsellor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cs-counsellors__counsellor-name {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 0.5rem !important;
+}
+
+.cs-counsellors__counsellor-qualification {
+  text-align: center;
+  font-weight: 400;
+  color: var(--paragraph-color);
+}
+
+@media screen and (min-width: 664px) {
+  .cs-counsellors {
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1368px) {
+  .cs-counsellors {
+    gap: 4rem;
+  }
+
+  .cs-counsellors__counsellor-img {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .cs-counsellors {
+    gap: 6rem;
+  }
+}
+@media screen and (min-width: 1571px) {
+  .cs-counsellors {
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
 

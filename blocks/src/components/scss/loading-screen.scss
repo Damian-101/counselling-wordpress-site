@@ -1,0 +1,8 @@
+@import "../scss/index.scss";
+.loading-screen{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    @include cs-block-ui;
+    @include cs-block-ui-border(var(--cs-block-border-color));
+  }

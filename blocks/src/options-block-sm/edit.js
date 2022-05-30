@@ -10,17 +10,6 @@ const Edit = (props) => {
     const optionImg = props.attributes.optionImg
     const optionBgColor = props.attributes.optionBgColor
     const textColor = props.attributes.textColor
-    const attributes = {optionName:optionName,optionImg:optionImg,optionBgColor:optionBgColor,textColor:textColor}
-        // set attributes to localStorage 
-        useEffect(() => {
-            let customerOptions = JSON.parse(localStorage.getItem('customerOptions'))
-            if(customerOptions){
-                customerOptions = [...customerOptions,attributes]
-            }else{
-                customerOptions = [attributes]
-            }
-            localStorage.setItem('customerOptions',JSON.stringify(customerOptions))
-        },[optionName,optionImg,optionBgColor,textColor])
     return (
         <>
             <Sidebar props={props} />

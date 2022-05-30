@@ -1,12 +1,14 @@
 import { ToolbarGroup, ToolbarButton, Popover } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
-import { Button,ColorPicker  } from '@wordpress/components';
-import { color } from '@wordpress/icons';
-import { useState, useRef, useEffect } from "react"
-const Toolbar = ({ props }) => {
+import { Button, ColorPicker } from '@wordpress/components';
+import { color, layout } from '@wordpress/icons';
+import { useState, useEffect } from "react"
+const Toolbar = ({ props, layoutConfig }) => {
     const [isLinkPopUp, setIsLinkPopUp] = useState(false);
+    const [isLayoutPopUp, setIsLayoutPopUp] = useState(false);
     //attributes
     const optionBgColor = props.attributes.optionBgColor
+    const layoutName = props.attributes.layoutName
     const ALLOWED_MEDIA_TYPES = ['image'];
     // get image data 
     const getBackgroundImage = (value) => {
@@ -14,8 +16,13 @@ const Toolbar = ({ props }) => {
     }
 
     // open the popover
-    const toggleVisible = () => {
+    const toggleVisibleLinkPopup = () => {
         setIsLinkPopUp((state) => !state);
+    };
+
+    // open the popover
+    const toggleVisibleLayoutPopup = () => {
+        setIsLayoutPopUp((state) => !state);
     };
 
     // on Color Change
@@ -30,6 +37,27 @@ const Toolbar = ({ props }) => {
         }
     }, [props.isSelected])
 
+    //render layouts
+    const renderLayouts = () => {
+        return layoutConfig[0].map(layout => {
+            if(layoutName && layoutName !== layout.name){
+                console.log(layoutName , layout.name)
+                return (
+                    <div className="cs-select-layout__layout-1 layout">
+                        <img src={layout.img} alt={layout.name} data-layout={layout.name} onClick={layoutConfig[1]}/>
+                        <h2 className="cs-select-layout__layout-name">{layout.name}</h2>
+                    </div>
+                )   
+            }else{
+                return (
+                    <div className="cs-select-layout__layout-1 layout">
+                        <img src={layout.img} alt={layout.name} data-layout={layout.name} className='layout--selected'/>
+                        <h2 className="cs-select-layout__layout-name">{layout.name + " :"}<span className="cs-select-layout__layout-name__selected"> Selected</span></h2>
+                    </div>
+                ) 
+            }
+        })
+    }
     return (
         <>
             <BlockControls>
@@ -48,16 +76,30 @@ const Toolbar = ({ props }) => {
                     <ToolbarButton
                         icon={color}
                         label="Add Background Color"
-                        onClick={toggleVisible}
+                        onClick={toggleVisibleLinkPopup}
                     />
                     {isLinkPopUp &&
-                        <Popover onClose={toggleVisible}>
+                        <Popover onClose={toggleVisibleLinkPopup}>
                             <ColorPicker
-                                color = {optionBgColor}
+                                color={optionBgColor}
                                 enableAlpha
                                 defaultValue="#000"
                                 onChange={onColorChange}
                             />
+                        </Popover>
+                    }
+                </ToolbarGroup>
+                <ToolbarGroup>
+                    <ToolbarButton
+                        icon={layout}
+                        label="Add Background Color"
+                        onClick={toggleVisibleLayoutPopup}
+                    />
+                    {isLayoutPopUp &&
+                        <Popover onClose={toggleVisibleLayoutPopup}>
+                            <div className="cs-select-layout__layouts__popup">
+                                {renderLayouts()}
+                            </div>
                         </Popover>
                     }
                 </ToolbarGroup>

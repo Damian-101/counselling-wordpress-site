@@ -1,0 +1,83 @@
+.cs-counsellors-block{
+    margin: var(--spacing-500) 0;
+}
+.cs-counsellors {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    // grid-gap: 2rem;
+    margin-top: var(--spacing-400) !important;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.cs-counsellors__counsellor-img{
+    border-radius: 300px;
+    margin-bottom: 1.4rem;
+    width: 210px;
+    height: 210px;
+}
+
+.cs-counsellors__counsellor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cs-counsellors__counsellor-name{
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: .5rem !important;
+}
+
+.cs-counsellors__counsellor-qualification {
+    text-align: center;
+    font-weight: 400;
+    color: var(--paragraph-color);
+}
+
+@media screen and (min-width:664px){
+    .cs-counsellors {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+// @media screen and (min-width:868px){
+//     .cs-counsellors {
+//         grid-template-columns: 1fr 1fr 1fr 1fr;
+//     }
+// }
+
+
+@media screen and (min-width:1368px){
+    .cs-counsellors {
+        gap: 4rem;
+    }
+    .cs-counsellors__counsellor-img{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .cs-counsellors{
+        gap: 6rem;
+    }
+}
+
+
+@media screen and (min-width:1571px) {
+    .cs-counsellors{
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+@media screen and (min-width:1878px) {
+    .cs-counsellors{
+        // grid-gap: 7rem;
+    }
+}
+

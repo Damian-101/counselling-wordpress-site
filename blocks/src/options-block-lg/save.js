@@ -1,24 +1,57 @@
-import {useBlockProps,RichText,InnerBlocks } from "@wordpress/block-editor";
+import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
 const save = (props) => {
     const optionName = props.attributes.optionName
     const optionImg = props.attributes.optionImg
     const optionBgColor = props.attributes.optionBgColor
     const textColor = props.attributes.textColor
+    const layoutName = props.attributes.layoutName
     const blockProps = useBlockProps.save();
-    return(
+
+    //left text layout
+    const leftTextLayout = () => {
+        return (
+            <section className="options-block-lg left-text" style={{ backgroundColor: optionBgColor }}>
+                <div className="options-block-lg__left" style={{ color: textColor }}>
+                    <RichText.Content tagName="h2" value={optionName} />
+                    <InnerBlocks.Content />
+                </div>
+                <div className="options-block-lg__right">
+                    {optionImg &&
+                        <img src={optionImg.url} alt={optionImg.alt} />
+                    }
+                </div>
+            </section>
+        )
+    }
+
+    //right text layout
+    const rightTextLayout = () => {
+        return (
+            <section className="options-block-lg right-text" style={{ backgroundColor: optionBgColor }}>
+                <div className="options-block-lg__right">
+                    {optionImg &&
+                        <img src={optionImg.url} alt={optionImg.alt} />
+                    }
+                </div>
+                <div className="options-block-lg__left" style={{ color: textColor }}>
+                    <RichText.Content tagName="h2" value={optionName} />
+                    <InnerBlocks.Content />
+                </div>
+            </section>
+        )
+    }
+    
+    const renderUi = () => {
+        if(layoutName && layoutName === "layout 1"){
+            return leftTextLayout()
+        }else{
+            return rightTextLayout()
+        }
+    }
+    return (
         <div {...blockProps}>
-            <div className="container">
-                <section className="options-block-lg" style={{backgroundColor:optionBgColor}}>
-                    <div className="options-block-lg__left" style={{color:textColor}}>
-                    <RichText.Content tagName="h2" value={ optionName } />
-                    <InnerBlocks.Content/>
-                    </div>
-                    <div className="options-block-lg__right">
-                        {optionImg &&
-                            <img src={optionImg.url} alt={optionImg.alt}/>
-                        }
-                    </div>
-                </section>
+            <div className="container" data-layout={layoutName}>
+                {renderUi()}
             </div>
         </div>
     )
