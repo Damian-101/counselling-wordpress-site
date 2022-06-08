@@ -1,0 +1,24 @@
+{
+    "apiVersion": 2,
+    "name": "cs/articals-block",
+    "title": "Articals Block",
+    "category": "text",
+    "icon": "star",
+    "attributes":{
+        "spaceBetweenArticals":{
+            "type":"number"
+        },
+        "spaceBetweenHeading":{
+            "type":"number"
+        },
+        "spaceBetweenParagraph":{
+            "type":"number"
+        },
+        "paragraphColor":{
+            "type":"string"
+        },
+        "data":{
+            "type":"array"
+        }
+    }
+}

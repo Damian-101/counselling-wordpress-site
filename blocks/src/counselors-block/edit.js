@@ -66,14 +66,15 @@ const Edit = (props) => {
         })
     }, [])
 
-
-    useEffect(() => {
-
-    }, [])
-
     // refetch the api if try again btn clicked 
     useEffect(() => {
-        fetchData().then(values => {
+        fetchData().then((values) => {
+            setIsCounselorsAdded(true)
+            setData(values)
+        }, (reason) => {
+            setIsFetchError(true)
+            setSetErrorMsg(reason)
+            setIsLoading(false)
         })
     }, [refresh])
 
