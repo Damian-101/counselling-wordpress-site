@@ -1,0 +1,30 @@
+:root {
+  --cs-block-bg-color:#f6f6f6;
+  --cs-block-border-color:rgb(221, 221, 221);
+}
+
+.cs-msg-ui {
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+
+.loading-screen {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+/*# sourceMappingURL=loading-screen.css.map */

@@ -3,7 +3,9 @@ import { useState, useEffect } from "react"
 import FullWidthErrorMsg from '../components/full-width-error-msg';
 import RenderLoadingScreen from "../components/loadingScreen"
 import Sidebar from './customize/sidebar';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import "./scss/index.scss"
+import "./js/carousel"
 const Edit = (props) => {
     const [isCounselorAdded, setIsCounselorsAdded] = useState(false)
     const [refresh, setRefresh] = useState(false)
@@ -11,6 +13,7 @@ const Edit = (props) => {
     const [isLoading, setIsLoading] = useState(true)
     const [isFetchError, setIsFetchError] = useState(false)
     const [fetchErrorMsg, setSetErrorMsg] = useState()
+    const [viewportSize, setViewportSize] = useState(0)
     //attributes
     const showCounselorInfo = props.attributes.showCounselorInfo
     const hideCounselorInfo = props.attributes.hideCounselorInfo
@@ -21,6 +24,10 @@ const Edit = (props) => {
     const TEMPLATE = [
         ["core/heading", { textAlign: "center" }]
     ]
+
+    useEffect(() => {
+        carousel()
+    })
 
     //fetch customer counselors data
     const fetchData = async () => {
@@ -45,8 +52,8 @@ const Edit = (props) => {
 
 
     useEffect(() => {
-        props.setAttributes({data:data})
-    },[data])
+        props.setAttributes({ data: data })
+    }, [data])
 
     useEffect(() => {
         fetchData().then((values) => {
@@ -57,6 +64,11 @@ const Edit = (props) => {
             setSetErrorMsg(reason)
             setIsLoading(false)
         })
+    }, [])
+
+
+    useEffect(() => {
+
     }, [])
 
     // refetch the api if try again btn clicked 
@@ -70,20 +82,30 @@ const Edit = (props) => {
         setIsLoading(true)
     }
 
+    window.addEventListener("resize", () => {
+        setViewportSize(window.innerWidth)
+    })
+
+
+    useEffect(() => {
+        setViewportSize(window.innerWidth)
+    }, [])
 
     const renderCounsellorsUi = () => {
         let counsellorUi
         if (data) {
             counsellorUi = data.map(counsellor => {
                 return (
-                    <div className='cs-counsellors__counsellor'>
-                        <img src={counsellor.ImgUrl} className="cs-counsellors__counsellor-img" />
-                        {showCounselorInfo ?
-                            <h5 className="cs-counsellors__counsellor-name">{counsellor.CounselorName}</h5>:<></>
-                        }
-                        {showCounselorInfo === true && hideCounselorInfo === false ?
-                            <h6 className="cs-counsellors__counsellor-qualification">{counsellor.Qualification}</h6>:<></>
-                        }
+                    <div className="swiper-slide">
+                        <div className='cs-counsellors__counsellor' id="cs-articals-block">
+                            <img src={counsellor.ImgUrl} className="cs-counsellors__counsellor-img" />
+                            {showCounselorInfo ?
+                                <h5 className="cs-counsellors__counsellor-name">{counsellor.CounselorName}</h5> : <></>
+                            }
+                            {showCounselorInfo === true && hideCounselorInfo === false ?
+                                <h6 className="cs-counsellors__counsellor-qualification">{counsellor.Qualification}</h6> : <></>
+                            }
+                        </div>
                     </div>
                 )
             })
@@ -91,9 +113,11 @@ const Edit = (props) => {
         return (
             <div className="cs-counsellors-block container">
                 {/* heading  */}
-                <InnerBlocks template={TEMPLATE} className="cs-counsellors cs-heading" />
+                <InnerBlocks template={TEMPLATE} className="cs-counsellors cs-heading" templateLock="all" />
                 <div className="cs-counsellors">
-                    {counsellorUi}
+                        <div className="swiper-wrapper">
+                            {counsellorUi}
+                        </div>
                 </div>
             </div>
         )
@@ -126,13 +150,15 @@ const Edit = (props) => {
         //display counsellors
         if (isFetchError === false && isCounselorAdded === true) {
             return (
-                renderCounsellorsUi()
+                <>
+                    {renderCounsellorsUi()}
+                </>
             )
         }
     }
     return (
         <>
-            <Sidebar props={props}/>
+            <Sidebar props={props} />
             <div {...blockProps}>
                 {isLoading ?
                     <RenderLoadingScreen isLoading={isLoading} /> : renderUi()

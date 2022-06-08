@@ -1,0 +1,17 @@
+@media screen and (min-width: 867px) {
+  .cs-three-column-options-block__content .block-editor-block-list__layout {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+  }
+  .cs-three-column-options-block__wraper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.6rem;
+  }
+}
+/*# sourceMappingURL=index.css.map */

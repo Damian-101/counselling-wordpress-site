@@ -1,0 +1,227 @@
+@import "../../components/scss/index.scss";
+.cs-articals-block{
+    margin-top: var(--spacing-500);
+    margin-bottom: var(--spacing-500);
+}
+
+.cs-heading{
+    max-width: 400px;
+}
+
+.cs-articals__link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.cs-articals{
+    margin-top: var(--spacing-400) !important;
+}
+
+.cs-articals__artical{
+    min-width:251px;
+    cursor: pointer;
+}
+.cs-articals-block{
+    .swiper-slide{
+        flex-shrink: inherit !important;
+    }    
+}
+.cs-articals__artical-img{
+    width: 100%;
+    border-radius: 2rem;
+    min-height:192.2px;
+    max-height:192.2px;
+    object-fit: cover;
+}
+
+.cs-articals__artical-artical-title{
+    font-weight: 400;
+    margin-top: 2rem !important;
+    text-transform: capitalize;
+}
+
+.cs-articals-block__top{
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-articals-block__top-view-all{
+    display: table;
+    margin-left: auto !important;
+    margin-top: 1rem !important;
+    cursor: pointer;
+}
+
+.cs-articals-block__top-view-all__wraper{
+    display: flex;
+    align-items: center;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.cs-articals-block__top-view-all__icon{
+    width: 25px;
+    height: 25px;
+    margin-left: .5rem;
+    fill: var(--link-color);
+}
+
+.cs-articals-block__top-view-all__wraper:hover{
+    .cs-articals-block__top-view-all__name{
+        color: var(--theme-color) !important;
+    }
+    .cs-articals-block__top-view-all__icon{
+        fill: var(--theme-color);
+    }
+}
+
+@media screen and (min-width:689px){
+    .cs-articals-block__top {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (min-width:1040px) {
+    .cs-articals__artical{
+        min-width:251px;
+    }
+    .cs-articals__artical-img{
+        min-height:192.2px;
+        max-height:192.2px;
+    }
+    
+}
+
+@media screen and (min-width:1040px) {
+    .cs-articals__artical{
+        min-width:282px;
+    }
+    .cs-articals__artical-img{
+        min-height:242.2px;
+        max-height:242.2px;
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .cs-articals__artical{
+        min-width:327px;
+    }
+    .cs-articals__artical-img{
+        min-height:282px;
+        max-height:282px;
+    }
+    
+}
+
+//select ui
+.select-posts__posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    // max-width: 80%;
+    grid-gap: 2rem;
+}
+
+
+@media screen and (min-width:582px) {
+    .select-posts__posts {
+        max-width: 80%;
+    }
+}
+
+@media screen and (min-width:905px) {
+    .select-posts__posts {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+    }
+}
+
+@media screen and (min-width:1456px) {
+    .select-posts__posts {
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 80%;
+    }
+}
+
+// @media screen and (min-width:1800px) {
+//     .select-posts__posts {
+//         grid-template-columns: 1fr 1fr 1fr 1fr;
+//     }
+// }
+
+.select-item:hover{
+    border: 1px solid var(--theme-color);
+}
+
+
+
+.select-posts{
+    @include cs-block-ui;
+    @include cs-block-ui-border(var(--cs-block-border-color));
+    padding: 2rem;
+}
+
+@media screen and (min-width:468px){
+    .select-posts{
+        padding: 4rem;
+    }
+}
+
+.select-posts__bottom{
+    display: flex;
+    justify-content: flex-end;
+    // width: 80%;
+    align-items: center;
+    margin-top: 5rem;
+}
+.select-posts__bottom-artical-count{
+    margin-right: 2.3rem !important;
+    font-weight: 300;
+}
+
+.select-posts__bottom-add-posts{
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
+
+.select-posts__bottom-cancel{
+    margin-top: 0 !important;
+    background-color: transparent !important;
+    color: rgb(37, 37, 37) !important;
+    border: 2px solid #525050;
+}
+
+.select-posts{
+    .err{
+        // width: 80%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1rem !important;
+    }
+}
+
+@media screen and (min-width:582px) {
+    .select-posts__bottom{
+        max-width: 80%;
+    }
+    .select-posts{
+        .err{
+            width: 80%;
+        }
+    }
+}
+
+///////////////////////////////////////////////
+////////////////Hover Effects//////////////////
+///////////////////////////////////////////////
+
+.cs-articals__artical:hover{
+    .cs-articals__artical-img{
+        opacity: 80%;
+        transition: .1s opacity ease-in-out;
+    }
+    .cs-articals__artical-artical-title{
+        color: var(--theme-color);
+        transition: .1s color ease-in-out;
+    }
+}

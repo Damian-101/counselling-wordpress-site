@@ -14,7 +14,7 @@
         },
         "opensInNewTab":{
             "type":"boolean",
-            "default":"true"
+            "default":true
         },
         "url":{
             "type":"string"

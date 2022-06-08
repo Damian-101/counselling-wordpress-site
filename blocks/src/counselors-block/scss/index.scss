@@ -1,21 +1,23 @@
 .cs-counsellors-block{
     margin: var(--spacing-500) 0;
+    overflow: hidden;
 }
 .cs-counsellors {
-    display: flex;
-    grid-template-columns: 1fr 1fr;
-    // grid-gap: 2rem;
-    margin-top: var(--spacing-400) !important;
-    flex-wrap: wrap;
-    gap: 4rem;
-    justify-content: center;
+    .swiper-wrapper{
+        display: flex;
+        margin-top: var(--spacing-400) !important;
+    }
 }
-
+.cs-counsellors{
+    .swiper-slide{
+        flex-shrink: inherit !important;
+    }    
+}
 .cs-counsellors__counsellor-img{
     border-radius: 300px;
     margin-bottom: 1.4rem;
-    width: 210px;
-    height: 210px;
+    height: 210px !important;
+    width: 100%;
 }
 
 .cs-counsellors__counsellor {
@@ -23,6 +25,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 210px;
 }
 
 .cs-counsellors__counsellor-name{
@@ -37,47 +40,58 @@
     color: var(--paragraph-color);
 }
 
+.cs-counsellors__counsellor{
+    width: 210px;
+}
+
 @media screen and (min-width:664px){
     .cs-counsellors {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-// @media screen and (min-width:868px){
-//     .cs-counsellors {
-//         grid-template-columns: 1fr 1fr 1fr 1fr;
-//     }
-// }
-
-
-@media screen and (min-width:1368px){
+@media screen and (min-width:790px){
     .cs-counsellors {
-        gap: 4rem;
+        .swiper-wrapper{
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .swiper-slide{
+            width: auto !important;
+        }
     }
-    .cs-counsellors__counsellor-img{
-        width: 250px;
-        height: 250px;
+}
+
+
+@media screen and (min-width:1300px){
+    .cs-counsellors {
+        .swiper-wrapper {
+            gap: 4rem;
+        }
+        .cs-counsellors__counsellor-img{
+            height: 250px !important;
+        }
+        .cs-counsellors__counsellor{
+            width: 250px;
+        }
     }
 }
 
 @media screen and (min-width:1400px) {
-    .cs-counsellors{
-        gap: 6rem;
+    .cs-counsellors {
+        .swiper-wrapper{
+            gap: 6rem;
+        }
     }
 }
 
 
 @media screen and (min-width:1571px) {
-    .cs-counsellors{
-        max-width: 90%;
-        margin: 0 auto;
+    .cs-counsellors {
+        .swiper-wrapper{
+            max-width: 90%;
+            margin: 0 auto;
+        }
     }
 }
-
-
-@media screen and (min-width:1878px) {
-    .cs-counsellors{
-        // grid-gap: 7rem;
-    }
-}
-

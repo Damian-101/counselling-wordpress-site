@@ -1,0 +1,51 @@
+.btn-content {
+  padding: 1.8rem 3rem;
+  border-radius: 150px;
+  font-family: var(--primaryFont);
+  border: none;
+  min-width: 123px;
+  font-size: 1.4rem;
+  color: #313131;
+  cursor: pointer;
+  -webkit-transition: all 0.3s cubic-bezier(0.49, 0.025, 0.49, 1);
+  transition: all 0.3s cubic-bezier(0.49, 0.025, 0.49, 1);
+  margin-top: var(--spacing-400);
+}
+
+.btn-content div {
+  white-space: nowrap !important;
+}
+
+.secondary--btn {
+  margin-left: 2rem;
+}
+
+.btn-editor {
+  cursor: text;
+}
+
+@media screen and (min-width: 1030px) {
+  .btn-content {
+    padding: 2.6rem 3.2rem;
+    min-width: 190px;
+    font-size: 2.2rem;
+  }
+}
+
+.btn-content:hover {
+  background-color: var(--theme-color);
+}
+
+.btn--dark:hover {
+  color: #313131;
+}
+
+.btn-content.btn--light {
+  background-color: #e7e7e7;
+}
+
+.btn-content.btn--dark {
+  background-color: #333333;
+  color: white;
+}
+/*# sourceMappingURL=index.css.map */

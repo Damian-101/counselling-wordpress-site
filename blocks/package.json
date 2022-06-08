@@ -17,6 +17,7 @@
     "dompurify": "^2.3.8",
     "jest": "^28.0.3",
     "react-loading-screen": "^0.0.17",
-    "react-spinners": "^0.11.0"
+    "react-spinners": "^0.11.0",
+    "swiper": "^8.2.1"
   }
 }
