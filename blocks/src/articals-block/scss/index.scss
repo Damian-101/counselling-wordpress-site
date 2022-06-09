@@ -39,6 +39,19 @@
     max-width: 90%;
 }
 
+.btn--load-more {
+    margin: 0 auto;
+      margin-top: 0px;
+    display: table;
+    margin-top: 3rem;
+  }
+
+.cs-all-articals__artical-img{
+    span{
+        height: 100%;
+    }
+}
+
 @media screen and (min-width:667px){
     .cs-all-articals {
         display: grid;

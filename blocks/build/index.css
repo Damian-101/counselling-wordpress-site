@@ -79,6 +79,12 @@
   color: #f63f3f;
   font-weight: 500;
 }
+
+.btn--border {
+  background-color: transparent !important;
+  color: rgb(37, 37, 37) !important;
+  border: 2px solid #525050 !important;
+}
 /*!**************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/primary-btn-block/scss/index.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************/
@@ -829,6 +835,73 @@
   font-size: var(--font-size-100);
   width: 100%;
 }
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/react-loading-skeleton/dist/skeleton.css ***!
+  \***********************************************************************************************************************************************************************************************************/
+@-webkit-keyframes react-loading-skeleton {
+    100% {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+}
+
+@keyframes react-loading-skeleton {
+    100% {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+}
+
+.react-loading-skeleton {
+    --base-color: #ebebeb;
+    --highlight-color: #f5f5f5;
+    --animation-duration: 1.5s;
+    --animation-direction: normal;
+    --pseudo-element-display: block; /* Enable animation */
+
+    background-color: var(--base-color);
+
+    width: 100%;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    line-height: 1;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Necessary for overflow: hidden to work correctly in Safari */
+}
+
+.react-loading-skeleton::after {
+    content: ' ';
+    display: var(--pseudo-element-display);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(
+        90deg,
+        var(--base-color),
+        var(--highlight-color),
+        var(--base-color)
+    );
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+
+    -webkit-animation-name: react-loading-skeleton;
+
+            animation-name: react-loading-skeleton;
+    -webkit-animation-direction: var(--animation-direction);
+            animation-direction: var(--animation-direction);
+    -webkit-animation-duration: var(--animation-duration);
+            animation-duration: var(--animation-duration);
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+}
+
 /*!***********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/articals-block/scss/index.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************/
@@ -872,6 +945,17 @@
   margin-top: 1rem;
   font-size: calc(var(--font-size-300) - 1rem) !important;
   max-width: 90%;
+}
+
+.btn--load-more {
+  margin: 0 auto;
+  margin-top: 0px;
+  display: table;
+  margin-top: 3rem;
+}
+
+.cs-all-articals__artical-img span {
+  height: 100%;
 }
 
 @media screen and (min-width: 667px) {

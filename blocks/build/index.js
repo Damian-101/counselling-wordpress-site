@@ -2396,7 +2396,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_loadingScreen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/loadingScreen */ "./src/components/loadingScreen.js");
 /* harmony import */ var _customize_sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./customize/sidebar */ "./src/articals-block/customize/sidebar.js");
 /* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/react/swiper-react.js");
-/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./scss/index.scss */ "./src/articals-block/scss/index.scss");
+/* harmony import */ var react_loading_skeleton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-loading-skeleton */ "./node_modules/react-loading-skeleton/dist/index.mjs");
+/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./node_modules/react-loading-skeleton/dist/skeleton.css");
+/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./scss/index.scss */ "./src/articals-block/scss/index.scss");
+
+
 
 
 
@@ -2426,7 +2430,7 @@ const Edit = props => {
     const url = domainName + "/wp-json/wp/v2/posts?_embed" + per_page;
     return new Promise((resolve, reject) => {
       fetch(url).then(res => {
-        setTotalPostCount(res.headers.get('X-WP-Total'));
+        setTotalPostCount(parseInt(res.headers.get('X-WP-Total')));
         return res.json();
       }).then(data => {
         if (!data.code) {
@@ -2443,8 +2447,12 @@ const Edit = props => {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    if (showPostCount >= totalPostCount - 1) {
+    console.log(totalPostCount);
+
+    if (showPostCount >= totalPostCount) {
       setAllPostsVisible(true);
+    } else {
+      setAllPostsVisible(false);
     }
   }, [totalPostCount]);
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
@@ -2505,11 +2513,12 @@ const Edit = props => {
 
   const renderArticalsUi = () => {
     let articalUi;
+    let loadingUi = [];
 
     if (data) {
       articalUi = data.map(artical => {
         const imgObj = artical._embedded["wp:featuredmedia"];
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "cs-all-artical"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
           href: artical.link,
@@ -2529,16 +2538,41 @@ const Edit = props => {
           dangerouslySetInnerHTML: {
             __html: artical.excerpt.rendered
           }
-        })))));
+        }))))));
       });
+
+      if (data.length !== totalPostCount && data.length !== showPostCount) {
+        // totalPostCount - data.length + 7
+        for (let i = 1; i <= totalPostCount - data.length; i++) {
+          if (i !== postsPerLoadCount) {
+            loadingUi.push((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+              className: "cs-all-artical"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+              className: "cs-all-articals__link"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+              className: "cs-all-articals__artical"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+              className: "cs-all-articals__artical-img"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_9__["default"], null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+              className: "cs-all-articals__artical-bottom"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+              className: "cs-all-articals__artical-bottom__title"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_9__["default"], null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", {
+              className: "cs-all-articals__artial-bottom__para"
+            }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_9__["default"], null)))))));
+          }
+        }
+      }
+
+      console.log(loadingUi);
     }
 
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cs-all-articals-block container"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cs-all-articals"
-    }, articalUi), allPostsVisible ? "" : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "btn btn--dark",
+    }, articalUi, loadingUi), allPostsVisible ? "" : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "btn-content btn--dark btn--load-more btn--border",
       onClick: onLoadMoreClick
     }, "Load More"));
   }; //render ui
@@ -2616,10 +2650,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./node_modules/react-loading-skeleton/dist/skeleton.css");
 
 
-const Save = () => {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+ // import Edit from "./edit"
+// import "./js/articals-block"
+
+const Save = props => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "all-articals-block",
+    id: "all-articals-block"
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Save);
@@ -3100,6 +3141,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/counselors-block/save.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "react-dom");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -6756,6 +6800,19 @@ const Save = () => {
 
 /***/ }),
 
+/***/ "./node_modules/react-loading-skeleton/dist/skeleton.css":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-loading-skeleton/dist/skeleton.css ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/swiper/swiper.min.css":
 /*!********************************************!*\
   !*** ./node_modules/swiper/swiper.min.css ***!
@@ -7263,6 +7320,17 @@ module.exports = __webpack_require__.p + "images/rightTextLayout.b4e0df4d.png";
 
 "use strict";
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["ReactDOM"];
 
 /***/ }),
 
@@ -9970,6 +10038,121 @@ const resize = shortcut('resize');
 const scroll = shortcut('scroll');
 
 /* harmony default export */ __webpack_exports__["default"] = ($);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/react-loading-skeleton/dist/index.mjs":
+/*!************************************************************!*\
+  !*** ./node_modules/react-loading-skeleton/dist/index.mjs ***!
+  \************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SkeletonTheme": function() { return /* binding */ SkeletonTheme; },
+/* harmony export */   "default": function() { return /* binding */ Skeleton; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+
+
+/**
+ * @internal
+ */
+const SkeletonThemeContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext({});
+
+/* eslint-disable react/no-array-index-key */
+const defaultEnableAnimation = true;
+// For performance & cleanliness, don't add any inline styles unless we have to
+function styleOptionsToCssProperties({ baseColor, highlightColor, width, height, borderRadius, circle, direction, duration, enableAnimation = defaultEnableAnimation, }) {
+    const style = {};
+    if (direction === 'rtl')
+        style['--animation-direction'] = 'reverse';
+    if (typeof duration === 'number')
+        style['--animation-duration'] = `${duration}s`;
+    if (!enableAnimation)
+        style['--pseudo-element-display'] = 'none';
+    if (typeof width === 'string' || typeof width === 'number')
+        style.width = width;
+    if (typeof height === 'string' || typeof height === 'number')
+        style.height = height;
+    if (typeof borderRadius === 'string' || typeof borderRadius === 'number')
+        style.borderRadius = borderRadius;
+    if (circle)
+        style.borderRadius = '50%';
+    if (typeof baseColor !== 'undefined')
+        style['--base-color'] = baseColor;
+    if (typeof highlightColor !== 'undefined')
+        style['--highlight-color'] = highlightColor;
+    return style;
+}
+function Skeleton({ count = 1, wrapper: Wrapper, className: customClassName, containerClassName, containerTestId, circle = false, style: styleProp, ...originalPropsStyleOptions }) {
+    var _a, _b, _c;
+    const contextStyleOptions = react__WEBPACK_IMPORTED_MODULE_0__.useContext(SkeletonThemeContext);
+    const propsStyleOptions = { ...originalPropsStyleOptions };
+    // DO NOT overwrite style options from the context if `propsStyleOptions`
+    // has properties explicity set to undefined
+    for (const [key, value] of Object.entries(originalPropsStyleOptions)) {
+        if (typeof value === 'undefined') {
+            delete propsStyleOptions[key];
+        }
+    }
+    // Props take priority over context
+    const styleOptions = {
+        ...contextStyleOptions,
+        ...propsStyleOptions,
+        circle,
+    };
+    // `styleProp` has the least priority out of everything
+    const style = {
+        ...styleProp,
+        ...styleOptionsToCssProperties(styleOptions),
+    };
+    let className = 'react-loading-skeleton';
+    if (customClassName)
+        className += ` ${customClassName}`;
+    const inline = (_a = styleOptions.inline) !== null && _a !== void 0 ? _a : false;
+    const elements = [];
+    const countCeil = Math.ceil(count);
+    for (let i = 0; i < countCeil; i++) {
+        let thisStyle = style;
+        if (countCeil > count && i === countCeil - 1) {
+            // count is not an integer and we've reached the last iteration of
+            // the loop, so add a "fractional" skeleton.
+            //
+            // For example, if count is 3.5, we've already added 3 full
+            // skeletons, so now we add one more skeleton that is 0.5 times the
+            // original width.
+            const width = (_b = thisStyle.width) !== null && _b !== void 0 ? _b : '100%'; // 100% is the default since that's what's in the CSS
+            const fractionalPart = count % 1;
+            const fractionalWidth = typeof width === 'number'
+                ? width * fractionalPart
+                : `calc(${width} * ${fractionalPart})`;
+            thisStyle = { ...thisStyle, width: fractionalWidth };
+        }
+        const skeletonSpan = (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: className, style: thisStyle, key: i }, "\u200C"));
+        if (inline) {
+            elements.push(skeletonSpan);
+        }
+        else {
+            // Without the <br />, the skeleton lines will all run together if
+            // `width` is specified
+            elements.push(react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: i },
+                skeletonSpan,
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)));
+        }
+    }
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: containerClassName, "data-testid": containerTestId, "aria-live": "polite", "aria-busy": (_c = styleOptions.enableAnimation) !== null && _c !== void 0 ? _c : defaultEnableAnimation }, Wrapper
+        ? elements.map((el, i) => react__WEBPACK_IMPORTED_MODULE_0__.createElement(Wrapper, { key: i }, el))
+        : elements));
+}
+
+function SkeletonTheme({ children, ...styleOptions }) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(SkeletonThemeContext.Provider, { value: styleOptions }, children));
+}
+
 
 
 
