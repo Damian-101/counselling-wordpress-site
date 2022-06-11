@@ -1,0 +1,103 @@
+.cs-counsellors-block {
+  margin: var(--spacing-500) 0;
+  overflow: hidden;
+}
+
+.cs-counsellors .swiper-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: var(--spacing-400) !important;
+}
+
+.cs-counsellors .swiper-slide {
+  -ms-flex-negative: inherit !important;
+      flex-shrink: inherit !important;
+}
+
+.cs-counsellors__counsellor-img {
+  border-radius: 300px;
+  margin-bottom: 1.4rem;
+  height: 210px !important;
+  width: 100%;
+}
+
+.cs-counsellors__counsellor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 210px;
+}
+
+.cs-counsellors__counsellor-name {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: .5rem !important;
+}
+
+.cs-counsellors__counsellor-qualification {
+  text-align: center;
+  font-weight: 400;
+  color: var(--paragraph-color);
+}
+
+.cs-counsellors__counsellor {
+  width: 210px;
+}
+
+@media screen and (min-width: 664px) {
+  .cs-counsellors {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 790px) {
+  .cs-counsellors .swiper-wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 2rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .cs-counsellors .swiper-slide {
+    width: auto !important;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .cs-counsellors .swiper-wrapper {
+    gap: 4rem;
+  }
+  .cs-counsellors .cs-counsellors__counsellor-img {
+    height: 250px !important;
+  }
+  .cs-counsellors .cs-counsellors__counsellor {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .cs-counsellors .swiper-wrapper {
+    gap: 6rem;
+  }
+}
+
+@media screen and (min-width: 1571px) {
+  .cs-counsellors .swiper-wrapper {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=index.css.map */

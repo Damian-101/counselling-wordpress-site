@@ -4,9 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 // import "./js/articals-block"
 
 const Save = (props) => {
-    return(
-        <div className="all-articals-block" id="all-articals-block"></div>
-    )
+    return null
 }
 
 export default Save

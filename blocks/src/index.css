@@ -7,4 +7,10 @@
   color: #f63f3f;
   font-weight: 500;
 }
+
+.btn--border {
+  background-color: transparent !important;
+  color: #252525 !important;
+  border: 2px solid #525050 !important;
+}
 /*# sourceMappingURL=index.css.map */

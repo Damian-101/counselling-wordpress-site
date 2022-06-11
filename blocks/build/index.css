@@ -70,6 +70,73 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/index.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
+.cs-all-articals {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 2rem;
+}
+
+.cs-all-articals__artial-bottom__para {
+  color: var(--paragraph-color);
+  font-weight: 400;
+  max-width: 90%;
+  margin-top: 1rem !important;
+}
+.cs-all-articals__artial-bottom__para p {
+  margin: 0 !important;
+}
+
+.cs-all-articals__link {
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+}
+
+.cs-all-articals__artical-img {
+  width: 100%;
+  aspect-ratio: 99/73;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2rem;
+}
+
+.cs-all-articals__artical-bottom {
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.cs-all-articals__artical-bottom__title {
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  font-size: calc(var(--font-size-300) - 1rem) !important;
+  max-width: 90%;
+}
+
+.btn--load-more {
+  margin: 0 auto;
+  margin-top: 0px;
+  display: table;
+  margin-top: 3rem;
+}
+
+.cs-all-articals__artical-img span {
+  height: 100%;
+}
+
+@media screen and (min-width: 667px) {
+  .cs-all-articals {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1215px) {
+  .cs-all-articals {
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 .sidebar-label {
   padding: 1.2rem 0;
   display: block;

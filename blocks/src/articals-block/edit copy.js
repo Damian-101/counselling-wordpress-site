@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import FullWidthErrorMsg from '../components/full-width-error-msg';
 import RenderLoadingScreen from "../components/loadingScreen"
 import Sidebar from './customize/sidebar';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import "./scss/index.scss"
 const Edit = (props) => {
@@ -12,17 +14,21 @@ const Edit = (props) => {
     const [isLoading, setIsLoading] = useState(true)
     const [isFetchError, setIsFetchError] = useState(false)
     const [fetchErrorMsg, setSetErrorMsg] = useState()
+    const [showPostCount, setShowPostCount] = useState(6)
+    const [totalPostCount, setTotalPostCount] = useState(0)
+    const [allPostsVisible, setAllPostsVisible] = useState(false)
     const postsPerLoadCount = 6
     const blockProps = useBlockProps()
     const customerOptionsPageUrl = "/wp-admin/edit.php"
     const domainName = window.location.origin
     //fetch customer Articals data
     const fetchData = async () => {
-        const per_page = "&per_page=" + 6
+        const per_page = "&per_page=" + showPostCount
         const url = domainName + "/wp-json/wp/v2/posts?_embed" + per_page;
         return new Promise((resolve, reject) => {
             fetch(url)
                 .then(res => {
+                    setTotalPostCount(parseInt(res.headers.get('X-WP-Total')))
                     return res.json()
                 })
                 .then(data => {
@@ -39,12 +45,31 @@ const Edit = (props) => {
                 })
         })
     }
+    useEffect(() => {
+        console.log(totalPostCount)
+        if (showPostCount >= totalPostCount) {
+            setAllPostsVisible(true)
+        } else {
+            setAllPostsVisible(false)
+        }
+    }, [totalPostCount])
 
 
     useEffect(() => {
         props.setAttributes({ data: data })
     }, [data])
 
+    useEffect(() => {
+        fetchData().then((values) => {
+            setIsArticalsAdded(true)
+            setData(values)
+        }, (reason) => {
+            setIsFetchError(true)
+            setSetErrorMsg(reason)
+            setIsLoading(false)
+        })
+        console.log(showPostCount, totalPostCount)
+    }, [showPostCount])
 
     useEffect(() => {
         fetchData().then((values) => {
@@ -73,11 +98,23 @@ const Edit = (props) => {
         setRefresh(!refresh)
         setIsLoading(true)
     }
+    const onLoadMoreClick = () => {
+        if (showPostCount < totalPostCount - 1) {
+            setShowPostCount(showPostCount + postsPerLoadCount)
+        } else if (showPostCount === totalPostCount - 1) {
+            setShowPostCount(showPostCount + postsPerLoadCount)
+            setAllPostsVisible(true)
+        } else {
+            setAllPostsVisible(true)
+        }
+    }
+    console.log(showPostCount)
 
     //dont show the btn if all post are added
 
     const renderArticalsUi = () => {
         let articalUi
+        let loadingUi = []
         if (data) {
             articalUi = data.map(artical => {
                 const imgObj = artical._embedded["wp:featuredmedia"]
@@ -97,12 +134,37 @@ const Edit = (props) => {
                     </>
                 )
             })
+            // render loading artical while the posts are fetching  
+            if (data.length !== totalPostCount && data.length !== showPostCount) {
+                for (let i = 1; i <= totalPostCount - data.length; i++) {
+                    if (i !== postsPerLoadCount) {
+                        loadingUi.push(
+                            <div className="cs-all-artical">
+                                <a className="cs-all-articals__link">
+                                    <div className="cs-all-articals__artical">
+                                        <div className="cs-all-articals__artical-img">{<Skeleton/>}</div>
+                                        <div className="cs-all-articals__artical-bottom">
+                                            <h4 className="cs-all-articals__artical-bottom__title">{<Skeleton/>}</h4>
+                                            <h6 className="cs-all-articals__artial-bottom__para">{<Skeleton/>}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        )
+                    }
+                }
+            }
         }
         return (
             <div className="cs-all-articals-block container">
                 <div className="cs-all-articals">
                     {articalUi}
+                    {loadingUi}
                 </div>
+                {allPostsVisible ?
+                    "" : <button className="btn-content btn--dark btn--load-more btn--border" onClick={onLoadMoreClick}>Load More</button>
+                }
+
             </div>
         )
     }
