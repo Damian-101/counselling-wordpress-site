@@ -70,6 +70,51 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/index.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
+.skeleton {
+  opacity: 0.8;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  display: block;
+}
+
+.skeleton-text {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  position: relative;
+  color: transparent;
+}
+
+.skeleton-para {
+  width: 100%;
+  height: 1rem !important;
+}
+.skeleton-para:last-child {
+  width: 80%;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+  width: 80%;
+}
+
+@-webkit-keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
 .cs-all-articals {
   display: -ms-grid;
   display: grid;
@@ -972,6 +1017,51 @@
 /*!***********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/articals-block/scss/index.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************/
+.skeleton {
+  opacity: 0.8;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  display: block;
+}
+
+.skeleton-text {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  position: relative;
+  color: transparent;
+}
+
+.skeleton-para {
+  width: 100%;
+  height: 1rem !important;
+}
+.skeleton-para:last-child {
+  width: 80%;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+  width: 80%;
+}
+
+@-webkit-keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
 .cs-all-articals {
   display: -ms-grid;
   display: grid;
