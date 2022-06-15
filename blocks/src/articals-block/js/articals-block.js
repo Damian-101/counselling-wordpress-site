@@ -1,12 +1,8 @@
 //  :::::::::::::::::ToDo::::::::::::::::::
-//  fetch posts ::::DONE
-//  group sticky posts and other posts separately :::DONE
-//  render sticky posts at the top ::::DONE
-//  add load more functionaly ::::DONE
-//  make existing post count before load more dynamic ::::DONE
-//  refactor the code ::::DONE
-//  hide the overflowing values before click
 //  add loading screen when a artical is loading
+//  refactor the code (loading skeleton)
+//  fix the loading skeleton black border issue
+//  loading screen color
 
 const postUrl = "/wp-json/wp/v2/posts?_embed"
 const defaultPostCount = 6
@@ -18,11 +14,12 @@ const threeColArticals = new All_Articles(postUrl, defaultPostCount, pageCount, 
 
 
 //render loading skeleton
-const loadArticalSkeleton = () => {
+const loadArticalSkeleton = (pageCount) => {
+    let loadinCount = defaultPostCount
     const articals = document.getElementById("cs_all_articals")
-    const str = `<div class="cs-all-artical">
+    const str = `<div class="cs_loading">
         <div class="cs-all-articals__artical">
-            <img class="cs-all-articals__artical-img skeleton" />
+            <div class="cs-all-articals__artical-img skeleton"></div>
             <div class="cs-all-articals__artical-bottom">
                 <h4 class="cs-all-articals__artical-bottom__title skeleton skeleton-text">skeleton</h4>
                 <div class="cs-all-articals__artial-bottom__para skeleton skeleton-para"></div>
@@ -31,14 +28,32 @@ const loadArticalSkeleton = () => {
             </div>
         </div>
 </div>`
-    articals.innerHTML = articals.innerHTML + str;
+    if(allPostCount < defaultPostCount * pageCount){
+        loadinCount = defaultPostCount
+    }
+    for (let i = 0; i < loadinCount; i++) {
+        articals.innerHTML = articals.innerHTML + str;
+    }
+}
+
+//hide loding skeletons
+const hideLoadingSkeletons = (loadingArticles,index,pageCount) => {
+    loadingArticles[index].style.display = "none"
+    const loadingArticlesArr = Array.from(loadingArticles)
+    if(allPostCount < defaultPostCount * pageCount){
+        loadingArticlesArr.forEach((loadingArticle) => {
+            loadingArticle.style.display = "none"
+        })
+    }
 }
 
 // get the articals to render
 const load_posts = async (pageCount) => {
+    //load skeleton before articles rendering
+    loadArticalSkeleton(pageCount)
     const data = await threeColArticals.getAllPosts(pageCount)
     const allRenderedArticals = document.getElementsByClassName("cs-all-artical")
-    const firstLoadedArticalsHtml = document.getElementsByClassName("added_first")
+    const loadingArticles = document.getElementsByClassName("cs_loading")
     let existingArticals = []
     if (allRenderedArticals) {
         const allRenderedArticalsArr = Array.from(allRenderedArticals)
@@ -63,7 +78,9 @@ const load_posts = async (pageCount) => {
                     </div>
                 </a>
                 </div>`
+                //remove loading skeletons
                 articals.innerHTML = articals.innerHTML + str;
+                hideLoadingSkeletons(loadingArticles,index,pageCount)
             }
         })
     }
