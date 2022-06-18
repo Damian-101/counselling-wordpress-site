@@ -2,31 +2,27 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ColorPicker, ToggleControl } from '@wordpress/components';
 import { useState,useEffect } from "react"
 const Sidebar = ({ props }) => {
-    const textColor = props.attributes.textColor
-    const showCounselorInfo = props.attributes.showCounselorInfo
-    const hideCounselorInfo = props.attributes.hideCounselorInfo
+    const infinitScroll = props.attributes.infinitScroll
+    const showExcerpt = props.attributes.showExcerpt
 
-    useEffect(() => {
-        if(showCounselorInfo === false){
-            props.setAttributes({ hideCounselorInfo: false })
-        }
-    },[showCounselorInfo])
     return (
         <>
             <InspectorControls>
-                <PanelBody title="Features">
+                <PanelBody title="Post Loading Options">
                     <ToggleControl
-                        label="Show Counselor Info"
-                        checked={showCounselorInfo}
+                        label="Infinit Scroll"
+                        checked={infinitScroll}
                         onChange={() => {
-                            props.setAttributes({ showCounselorInfo: !showCounselorInfo })
+                            props.setAttributes({ infinitScroll: !infinitScroll })
                         }}
                     />
+                </PanelBody>
+                <PanelBody title="Article Options">
                     <ToggleControl
-                        label="Hide Only Counselor Qualification"
-                        checked={hideCounselorInfo}
+                        label="Show Excerpt"
+                        checked={showExcerpt}
                         onChange={() => {
-                            props.setAttributes({ hideCounselorInfo: !hideCounselorInfo })
+                            props.setAttributes({ showExcerpt: !showExcerpt })
                         }}
                     />
                 </PanelBody>

@@ -2343,32 +2343,26 @@ const Sidebar = _ref => {
   let {
     props
   } = _ref;
-  const textColor = props.attributes.textColor;
-  const showCounselorInfo = props.attributes.showCounselorInfo;
-  const hideCounselorInfo = props.attributes.hideCounselorInfo;
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    if (showCounselorInfo === false) {
-      props.setAttributes({
-        hideCounselorInfo: false
-      });
-    }
-  }, [showCounselorInfo]);
+  const infinitScroll = props.attributes.infinitScroll;
+  const showExcerpt = props.attributes.showExcerpt;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: "Features"
+    title: "Post Loading Options"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: "Show Counselor Info",
-    checked: showCounselorInfo,
+    label: "Infinit Scroll",
+    checked: infinitScroll,
     onChange: () => {
       props.setAttributes({
-        showCounselorInfo: !showCounselorInfo
+        infinitScroll: !infinitScroll
       });
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: "Hide Only Counselor Qualification",
-    checked: hideCounselorInfo,
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Article Options"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: "Show Excerpt",
+    checked: showExcerpt,
     onChange: () => {
       props.setAttributes({
-        hideCounselorInfo: !hideCounselorInfo
+        showExcerpt: !showExcerpt
       });
     }
   }))));
@@ -2400,7 +2394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_class_all_articles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/class-all-articles */ "./src/articals-block/js/class-all-articles.js");
 
 //  :::::::::::::::::ToDo::::::::::::::::::
-//  make sure error messeges works
+//  pass attribute values to the front end and render them
 
 
 
@@ -2416,103 +2410,77 @@ const Edit = props => {
   const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)();
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true);
   const [isFetchError, setIsFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
-  const [fetchErrorMsg, setSetErrorMsg] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)();
-  const [pageCount, setPageCount] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(1);
-  const postsPerLoadCount = 6;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-  const postUrl = "/wp-json/wp/v2/posts?_embed";
-  const defaultPostCount = 6;
-  const allPostCount = parseInt(post_count[0].publish);
-  const articalsCountInARow = 3;
-  const loadMoreButtonId = "load_posts";
-  const threeColArticals = new All_Articles(postUrl, defaultPostCount, pageCount, allPostCount, articalsCountInARow, loadMoreButtonId); // // refetch the api if try again btn clicked 
-  // useEffect(() => {
-  //     fetchData().then((values) => {
-  //         setIsArticalsAdded(true)
-  //         setData(values)
-  //     }, (reason) => {
-  //         setIsFetchError(true)
-  //         setSetErrorMsg(reason)
-  //         setIsLoading(false)
-  //     })
-  // }, [refresh])
+  const domainName = window.location.origin;
+  const postPageUrl = domainName + '/wp-admin/edit.php'; //attributes
 
-  const fetchData = async () => {
-    const values = await threeColArticals.getAllPosts(pageCount);
-
-    if (values) {
-      setData(values);
-      setIsArticalsAdded(true);
-      setIsLoading(false);
+  const infinitScroll = props.attributes.infinitScroll;
+  const showExcerpt = props.attributes.showExcerpt;
+  let articalesConfig = new All_Articles('cs_all_articals', {
+    postUrl: "/wp-json/wp/v2/posts?_embed",
+    postCountPerPage: 6,
+    articalsCountInARow: 3,
+    allPostCount: parseInt(post_count[0].publish),
+    showPost: {
+      postTitle: true,
+      author: false,
+      imageThumbnail: true,
+      excerpt: showExcerpt,
+      postCreatedDate: true
+    },
+    pagination: {
+      loadOnScroll: infinitScroll,
+      byButton: {
+        pageIncrement: "next_posts"
+      }
     }
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+    fetchData().then(values => {
+      if (values[0]) {
+        setData(values);
+        setIsArticalsAdded(true);
+        setIsLoading(false);
+        articalesConfig.renderBlockContent();
+      }
+
+      setIsLoading(false);
+    }, reason => {
+      setIsFetchError(true);
+      setIsLoading(false);
+    });
+  }, [infinitScroll, showExcerpt, refresh]);
+
+  const onTryAgain = () => {
+    setRefresh(!refresh);
+    setIsLoading(true);
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    fetchData();
-  }, [data]); // const onTryAgain = () => {
-  //     setRefresh(!refresh)
-  //     setIsLoading(true)
-  // }
-
-  const onLoadMoreClick = () => {
-    setPageCount(pageCount + 1);
-    fetchData();
+  const fetchData = async () => {
+    const values = await articalesConfig.getAllPosts();
+    return values;
   }; //dont show the btn if all post are added
 
 
   const renderArticalsUi = () => {
-    let articalUi;
-
-    if (data) {
-      articalUi = data.map((artical, index) => {
-        console.log(index, threeColArticals.getRenderingPostCount());
-
-        if (artical && index <= threeColArticals.getRenderingPostCount() - 1) {
-          const imgObj = artical._embedded["wp:featuredmedia"];
-          return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-            className: "cs-all-artical"
-          }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-            href: artical.link,
-            className: "cs-all-articals__link"
-          }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-            className: "cs-all-articals__artical"
-          }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-            src: imgObj[0].source_url,
-            alt: imgObj[0].alt_text,
-            className: "cs-all-articals__artical-img"
-          }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-            className: "cs-all-articals__artical-bottom"
-          }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
-            className: "cs-all-articals__artical-bottom__title"
-          }, artical.title.rendered), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", {
-            className: "cs-all-articals__artial-bottom__para",
-            dangerouslySetInnerHTML: {
-              __html: artical.excerpt.rendered
-            }
-          }))))));
-        }
-      });
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "cs-all-articals-block container"
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "cs-all-articals-block container"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "cs-all-articals"
-    }, articalUi), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      class: "btn-content btn--dark btn--load-more btn--border",
-      id: "load_posts",
-      onClick: onLoadMoreClick
-    }, "Load More"));
+      class: "cs-all-articals",
+      id: "cs_all_articals"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      id: "cs_pagination"
+    })));
   }; //render ui
 
 
   const renderUi = () => {
-    // display add Artical data
+    //display add Artical data
     if (isFetchError === false && isArticlesAdded === false) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_full_width_error_msg__WEBPACK_IMPORTED_MODULE_3__["default"], {
         errorHeading: "articals Not Added",
         errorMsg: `Before Using This Component You
-                                     Need To Add <a href=${customerOptionsPageUrl}>Posts</a>
+                                     Need To Add <a href=${postPageUrl}>Posts</a>
                                       In the Admin Panel`,
         errorBtn: ['Try Again', onTryAgain]
       });
@@ -2580,33 +2548,259 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class All_Articles {
-  constructor(postUrl, defaultPostCount, _pageCount, allPostCount, articalsCountInARow, loadMoreButtonId) {
-    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "hideLoadMoreBtn", () => {
-      if (this.loadMoreButtonId) {
-        document.getElementById(this.loadMoreButtonId).style.display = "none";
+  constructor(selectorName, config) {
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "init", () => {
+      if (this.config.pagination.loadOnScroll) {
+        this.infinitScroll = this.config.pagination.loadOnScroll;
+      }
+
+      if (this.config.showPost.excerpt !== undefined) {
+        this.showExcerpt = this.config.showPost.excerpt;
+      }
+
+      if (this.config.pagination.byButton) {
+        this.pageIncrement = this.config.pagination.byButton.pageIncrement;
+      } // add new pagination wraper if defined 
+
+
+      if (this.config.pagination.paginationSelector) {
+        this.paginationWraperSelector = this.config.pagination.paginationSelector;
       }
     });
 
-    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "fetchStickyPosts", async pageCount => {
-      this.pageCount = pageCount;
-      const per_page = "&per_page=" + this.getRenderingPostCount();
-      const sticky = "&sticky=true";
-      const url = this.postUrl + per_page + sticky;
-      return new Promise((resolve, reject) => {
-        fetch(url).then(res => {
-          if (this.getRenderingPostCount() >= this.allPostCount) {
-            this.hideLoadMoreBtn();
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "loadPostsButtonsConfig", value => {
+      if (value) {
+        this.infinitScroll = value;
+      }
+
+      const buttonConfig = this.config.pagination.byButton;
+      const paginationWraper = document.getElementById(this.paginationWraperSelector); //////////Render Buttons/////////////
+      // render load more button
+
+      if (!this.infinitScroll || this.infinitScroll === false) {
+        const button = document.createElement('button');
+
+        if (buttonConfig.pageIncrement) {
+          this.pageIncrement = buttonConfig.pageIncrement;
+        }
+
+        button.id = this.pageIncrement;
+        button.className = 'btn-content btn--dark btn--load-more btn--border';
+        button.innerText = 'Load More';
+        paginationWraper.appendChild(button);
+        document.getElementById(this.pageIncrement).addEventListener("click", () => {
+          this.pageCount = this.pageCount + 1; // hide button if increment values ends
+
+          if (this.getRenderingPostCount() >= this.config.allPostCount) {
+            document.getElementById(this.pageIncrement).style.display = "none";
           }
 
+          this.load_posts(this.pageCount);
+        });
+      } //////////////////////////////add this to load posts on scroll
+      // if(this.infinitScroll === true){
+      //     const button = document.getElementById(this.pageIncrement)
+      //     if(button){
+      //         button.remove()
+      //     }
+      // }
+
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "loadPostsOnScroll", () => {
+      if (this.infinitScroll === true) {
+        window.addEventListener("scroll", () => {
+          if (this.getRenderingPostCount() <= this.config.allPostCount) {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+              this.pageCount = this.pageCount + 1;
+              this.load_posts(this.pageCount);
+            }
+          }
+        });
+      }
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "loadArticalSkeleton", () => {
+      const articals = document.getElementById(this.selectorName);
+      let loadingCount = this.config.postCountPerPage;
+
+      if (this.config.allPostCount < this.config.postCountPerPage * this.pageCount) {
+        loadingCount = this.config.postCountPerPage;
+      }
+
+      for (let i = 0; i < loadingCount; i++) {
+        let postTitle;
+        let postThumbnail;
+        let postAuthor;
+        let postsCreatedDate;
+        let postExcerpt;
+        let articleBottom; // article wrapper
+
+        const wraper = document.createElement('div');
+        wraper.className = 'cs_loading'; // article link wraper 
+
+        let linkWraper = document.createElement('div');
+        linkWraper.className = 'cs-all-articals__artical';
+        wraper.appendChild(linkWraper); //show post thumbnail image
+
+        if (this.config.showPost.imageThumbnail === true) {
+          postThumbnail = document.createElement('div');
+          postThumbnail.className = 'cs-all-articals__artical-img skeleton';
+          linkWraper.appendChild(postThumbnail);
+        } //article bottom
+
+
+        if (this.config.showPost.postTitle === true) {
+          articleBottom = document.createElement('div');
+          articleBottom.className = 'cs-all-articals__artical-bottom';
+          linkWraper.appendChild(articleBottom);
+        } //show post title
+
+
+        if (this.config.showPost.postTitle === true) {
+          postTitle = document.createElement('h4');
+          postTitle.className = 'cs-all-articals__artical-bottom__title skeleton skeleton-text';
+          const value = document.createTextNode('skeleton');
+          postTitle.appendChild(value);
+          articleBottom.appendChild(postTitle);
+        } //show post excerpt
+
+
+        if (this.showExcerpt === true) {
+          for (let i = 0; i < 4; i++) {
+            postExcerpt = document.createElement('div');
+            postExcerpt.className = 'cs-all-articals__artial-bottom__para skeleton skeleton-para';
+            articleBottom.appendChild(postExcerpt);
+          }
+        } //render post to the dom
+
+
+        articals.appendChild(wraper);
+      }
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "hideLoadingSkeletons", (loadingArticles, index) => {
+      loadingArticles[index].style.display = "none";
+      const loadingArticlesArr = Array.from(loadingArticles);
+
+      if (this.config.allPostCount < this.config.postCountPerPage * this.pageCount) {
+        loadingArticlesArr.forEach(loadingArticle => {
+          loadingArticle.style.display = "none";
+        });
+      }
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "load_posts", async () => {
+      //load skeleton before articles rendering
+      this.loadArticalSkeleton();
+      const data = await this.getAllPosts();
+      const allRenderedArticals = document.getElementsByClassName("cs-all-artical");
+      const loadingArticles = document.getElementsByClassName("cs_loading");
+      let existingArticals = [];
+
+      if (allRenderedArticals) {
+        const allRenderedArticalsArr = Array.from(allRenderedArticals);
+        allRenderedArticalsArr.map(artical => {
+          existingArticals.push(artical.dataset.articalName);
+        });
+      }
+
+      if (data) {
+        data.map((artical, index) => {
+          const articals = document.getElementById(this.selectorName);
+          const imgObj = artical._embedded["wp:featuredmedia"];
+          let postTitle;
+          let postThumbnail;
+          let postAuthor;
+          let postsCreatedDate;
+          let postExcerpt;
+          let articleBottom; // article wrapper
+
+          const wraper = document.createElement('div');
+          wraper.className = 'cs-all-artical';
+          wraper.dataset.articalName = artical.title.rendered; // article link wraper 
+
+          let linkWraper = document.createElement('a');
+          linkWraper.href = artical.link;
+          linkWraper.className = 'cs-all-articals__link';
+          wraper.appendChild(linkWraper); //show post thumbnail image
+
+          if (this.config.showPost.imageThumbnail === true && imgObj[0].source_url) {
+            postThumbnail = document.createElement('img');
+            postThumbnail.src = imgObj[0].source_url;
+            postThumbnail.alt = imgObj[0].alt_text || "";
+            postThumbnail.className = 'cs-all-articals__artical-img';
+            linkWraper.appendChild(postThumbnail);
+          } //article bottom
+
+
+          if (this.config.showPost.postTitle === true || this.showExcerpt) {
+            articleBottom = document.createElement('div');
+            articleBottom.className = 'cs-all-articals__artical-bottom';
+            linkWraper.appendChild(articleBottom);
+          } //show post title
+
+
+          if (this.config.showPost.postTitle === true && artical.title.rendered) {
+            postTitle = document.createElement('h4');
+            postTitle.className = 'cs-all-articals__artical-bottom__title';
+            const value = document.createTextNode(artical.title.rendered);
+            postTitle.appendChild(value);
+            articleBottom.appendChild(postTitle);
+          } //show post excerpt
+
+
+          if (this.showExcerpt === true && artical.excerpt.rendered) {
+            postExcerpt = document.createElement('h6');
+            postExcerpt.className = 'cs-all-articals__artial-bottom__para';
+            postExcerpt.innerHTML = artical.excerpt.rendered;
+            articleBottom.append(postExcerpt);
+          } //render post to the dom
+
+
+          if (existingArticals[index] !== artical.title.rendered) {
+            articals.append(wraper);
+          }
+
+          this.hideLoadingSkeletons(loadingArticles, index);
+        });
+      }
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "setAttributes", () => {
+      const articlesWrapper = document.getElementById('cs_all_articals');
+      const infinitScroll = Boolean(parseInt(articlesWrapper.dataset['ininitScroll']));
+      const showExcerpt = Boolean(parseInt(articlesWrapper.dataset['showExcerpt']));
+      this.infinitScroll = infinitScroll;
+      this.showExcerpt = showExcerpt;
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "renderPosts", () => {
+      window.addEventListener("load", () => {
+        this.setAttributes();
+        this.load_posts(this.pageCount);
+        this.loadPostsButtonsConfig();
+        this.loadPostsOnScroll();
+      });
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "fetchStickyPosts", async () => {
+      const per_page = "&per_page=" + this.getRenderingPostCount();
+      const sticky = "&sticky=true";
+      const url = this.domainName + this.postUrl + per_page + sticky;
+      return new Promise((resolve, reject) => {
+        fetch(url).then(res => {
           return res.json();
         }).then(data => {
           if (!data.code) {
             resolve(data);
             this.primaryFetchPostsCount = data.length;
           } else {
+            this.fetchError = true;
             reject(data.code);
           }
         }).catch(err => {
+          this.fetchError = true;
           reject(err);
         });
       });
@@ -2623,37 +2817,51 @@ class All_Articles {
     });
 
     (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getRenderingPostCount", () => {
-      return this.defaultPostCount * this.pageCount;
+      return this.config.postCountPerPage * this.pageCount;
     });
 
-    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "fetchOtherPosts", async postsPerPageCount => {
-      const postCount = await postsPerPageCount;
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "renderBlockContent", () => {
+      const articals = document.getElementById(this.selectorName);
+      const button = document.getElementById(this.pageIncrement); // remove duplicate values
 
-      if (postCount && postCount !== 0) {
-        const per_page = "&per_page=" + postCount;
+      if (articals) {
+        articals.innerHTML = "";
+      }
+
+      if (button) {
+        button.remove();
+      }
+
+      this.load_posts();
+      this.loadPostsButtonsConfig();
+      this.loadPostsOnScroll();
+    });
+
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "fetchOtherPosts", async articlesNeededCount => {
+      if (articlesNeededCount && articlesNeededCount !== 0) {
+        const per_page = "&per_page=" + articlesNeededCount;
         const sticky = "&sticky=false";
-        const url = this.postUrl + per_page + sticky;
+        const url = this.domainName + this.postUrl + per_page + sticky;
         return new Promise((resolve, reject) => {
           fetch(url).then(res => {
-            // if (this.getRenderingPostCount() >= parseInt(res.headers.get('X-WP-Total'))) {
-            //     this.hideLoadMoreBtn()
-            // }
             return res.json();
           }).then(data => {
             if (!data.code) {
               resolve(data);
             } else {
               reject(data.code);
+              this.fetchError = true;
             }
           }).catch(err => {
             reject(err);
+            this.fetchError = true;
           });
         });
       }
     });
 
-    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getAllPosts", async pageCount => {
-      const stickyPosts = await this.fetchStickyPosts(pageCount);
+    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getAllPosts", async () => {
+      const stickyPosts = await this.fetchStickyPosts();
 
       if (stickyPosts) {
         const otherPosts = await this.fetchOtherPosts(this.findSecondaryFetchPerPageCount());
@@ -2667,15 +2875,19 @@ class All_Articles {
       }
     });
 
-    this.postUrl = postUrl;
-    this.defaultPostCount = defaultPostCount;
-    this.pageCount = _pageCount;
-    this.allPostCount = allPostCount;
-    this.domainName = window.location.origin;
-    this.articalsCountInARow = articalsCountInARow;
-    this.loadMoreButtonId = loadMoreButtonId;
+    this.selectorName = selectorName;
+    this.config = config;
     this.primaryFetchPostsCount = 0;
-    this.secondayFetchPostsCount = 0;
+    this.pageCount = 1;
+    this.postUrl = config.postUrl;
+    this.domainName = window.location.origin;
+    this.paginationWraperSelector = "cs_pagination";
+    this.pageIncrement = 'load_more';
+    this.selectorName = selectorName;
+    this.showExcerpt = true;
+    this.infinitScroll = false; // initialize variables
+
+    this.init();
   }
 
 }
@@ -2690,11 +2902,6 @@ class All_Articles {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./node_modules/react-loading-skeleton/dist/skeleton.css");
-
- // import Edit from "./edit"
-// import "./js/articals-block"
-
 const Save = props => {
   return null;
 };
@@ -22599,7 +22806,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"cs/articals-block","title":"Articals Block","category":"text","icon":"star","attributes":{"spaceBetweenArticals":{"type":"number"},"spaceBetweenHeading":{"type":"number"},"spaceBetweenParagraph":{"type":"number"},"paragraphColor":{"type":"string"},"data":{"type":"array"}}}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"cs/articals-block","title":"Articals Block","category":"text","icon":"star","attributes":{"align":{"type":"string","default":"wide"},"infinitScroll":{"type":"boolean","default":false},"showExcerpt":{"type":"boolean","default":true}}}');
 
 /***/ }),
 

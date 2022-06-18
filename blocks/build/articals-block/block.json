@@ -5,20 +5,17 @@
     "category": "text",
     "icon": "star",
     "attributes":{
-        "spaceBetweenArticals":{
-            "type":"number"
+        "align":{
+            "type":"string",
+            "default":"wide"
         },
-        "spaceBetweenHeading":{
-            "type":"number"
+        "infinitScroll":{
+            "type":"boolean",
+            "default":false
         },
-        "spaceBetweenParagraph":{
-            "type":"number"
-        },
-        "paragraphColor":{
-            "type":"string"
-        },
-        "data":{
-            "type":"array"
+        "showExcerpt":{
+            "type":"boolean",
+            "default":true
         }
     }
 }

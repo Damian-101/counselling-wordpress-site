@@ -25,18 +25,13 @@ class Cs_All_Articals_Block {
     function admin_assets(){
         wp_localize_script( "newblocktype", "post_count", [wp_count_posts('post')] );
     }
-    function block_content( $block_attributes, $content ) {
+    function block_content( $attributes ) {
         ob_start();
             ?>
             <div class='cs-all-articals-block container'>
-                <div class='cs-all-articals' id="cs_all_articals">
-                    <?php
-                        // foreach ($postHtml as $artical){
-                        //     echo $artical;
-                        // }
-                    ?>
+                <div class='cs-all-articals' id="cs_all_articals" data-align="<?php echo $attributes['align'] ?>" data-ininit-scroll = "<?php echo $attributes['infinitScroll'] ? 1 : 0 ?>" data-show-excerpt = "<?php echo $attributes['showExcerpt'] ? 1 : 0 ?>">
                 </div>
-                <button class="btn-content btn--dark btn--load-more btn--border" id="load_posts">Load More</button>
+                <div id="cs_pagination"></div>
             </div>
         <?php
         return ob_get_clean();
@@ -46,19 +41,15 @@ class Cs_All_Articals_Block {
     
      
     function block_supports() {
-        $styleSheetUrl = plugin_dir_url(__FILE__) . "scss/index.css";
+        $styleSheetUrl = dirname(__FILE__) . '/block.json';
         if ( ! function_exists( 'register_block_type' ) ) {
             // Block editor is not available.
             return;
         }
         register_block_type(
-            'cs/articals-block',
+            $styleSheetUrl,
             array(
-                'api_version'       => 2,
-                'title' => "Articals Block",
                 'render_callback'   => [$this,'block_content'],
-                'category' => "text",
-                'style' => 'cs-all-articals',
             )
         );
     }

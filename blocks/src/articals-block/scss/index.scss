@@ -10,15 +10,6 @@
     margin: 0 !important;
     position: relative;
     color: transparent;
-        // &::after{
-        //     content: "";
-        //     opacity: .7;
-        //     display: block;
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 100%;
-        //     top: 0;
-        // }
   }
 
   .skeleton-para{
@@ -46,10 +37,15 @@
   
   
 
-
+.cs-all-articals-block{
+  margin: var(--spacing-500) 0;
+}
 .cs-all-articals {
     display: grid;
     grid-gap: 2rem;
+    a:hover {
+      color: inherit !important;
+    }
   }
 
 .cs-all-articals__artial-bottom__para{
@@ -83,7 +79,7 @@
 
 .cs-all-articals__artical-bottom__title{
     margin-bottom: 3rem;
-    margin-top: 1rem;
+    margin-top: 1rem !important;
     font-size: calc(var(--font-size-300) - 1rem) !important;
     max-width: 90%;
 }
