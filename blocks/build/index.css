@@ -189,6 +189,13 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.skeleton {
+  opacity: 0.8;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  display: block;
+}
+
 .sidebar-label {
   padding: 1.2rem 0;
   display: block;
@@ -1142,6 +1149,48 @@
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/post-img-block/scss/index.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --cs-block-bg-color:#f6f6f6;
+  --cs-block-border-color:rgb(221, 221, 221);
+}
+
+.cs-msg-ui {
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+
+.cs-article-img-popup {
+  background-color: var(--cs-block-bg-color);
+  border-radius: var(--border-radius);
+  padding: 5rem;
+  min-height: 369px;
+  border: 1rem solid var(--cs-block-border-color);
+}
+.cs-article-img-popup button:nth-child(2) {
+  margin-left: 2rem;
+}
+.cs-article-img-popup .err {
+  margin-top: 2rem !important;
+}
+
+.cs-article-img {
+  background-color: rgb(45, 45, 45);
+  width: 100%;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /*# sourceMappingURL=index.css.map*/

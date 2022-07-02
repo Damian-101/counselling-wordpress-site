@@ -16,9 +16,6 @@
             "type":"boolean",
             "default":false
         },
-        "data":{
-            "type":"array"
-        },
         "opensInNewTab":{
             "type":"boolean",
             "default":true
@@ -28,6 +25,9 @@
         },
         "title":{
             "type":"string"
+        },
+        "selectedArticals":{
+            "type":"array"
         }
     }
 }

@@ -16,13 +16,15 @@ const Edit = (props) => {
     const [isFetchError, setIsFetchError] = useState(false)
     const [fetchErrorMsg, setSetErrorMsg] = useState()
     const [postCount,setPostCount] = useState(0)
+    const [totalPostCount,setTotalPostCount] = useState(10)
+    const [selectedArtical,setSelectedArticles] = useState()
     //attributes 
     const selectedPosts = props.attributes.selectedPosts
+    const selectedArticals = props.attributes.selectedArticals
     const selectedItemsCount = props.attributes.selectedItemsCount
     const isArticalsSelected = props.attributes.isArticalsSelected
     const opensInNewTab = props.attributes.opensInNewTab
     const url = props.attributes.url
-    console.log(opensInNewTab)
     const blockProps = useBlockProps()
     const customerOptionsPageUrl = "#"
     const domainName = window.location.origin
@@ -33,10 +35,13 @@ const Edit = (props) => {
 
     //fetch customer Articals data
     const fetchData = async () => {
-        const url = domainName + "/wp-json/wp/v2/posts?_embed";
+        const per_page = "&per_page=" + post_count[0].publish
+        const url = domainName + "/wp-json/wp/v2/posts?_embed" + per_page;
         return new Promise((resolve, reject) => {
             fetch(url)
-                .then(res => { return res.json() })
+                .then(res => { 
+                    return res.json() 
+                })
                 .then(data => {
                     if (!data.code) {
                         resolve(data)
@@ -69,10 +74,37 @@ const Edit = (props) => {
         articalsCarousel()
     })
 
-    // save data to the attributes when the data saved 
+
+ ///get seleced articles
+ const getSelectedArticles = () => {
+    let articalUi
+    if (data) {
+        articalUi = data.map(artical => {
+            const imgObj = artical._embedded["wp:featuredmedia"]
+            return selectedPosts.map(selectedPost => {
+                if (selectedPost === artical.title.rendered) {
+                    return (
+                        <div className="swiper-slide">
+                            <a href={artical.link} className="cs-articals__link">
+                                <div className="cs-articals__artical">
+                                    <img src={imgObj[0].source_url} alt={imgObj[0].alt_text} className="cs-articals__artical-img" />
+                                    <h5 className="cs-articals__artical-artical-title">{artical.title.rendered}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    )
+                }
+            })
+        })
+    }
+    return articalUi
+}
+
     useEffect(() => {
-        props.setAttributes({ data: data })
-    }, [data])
+        if (selectedPosts && selectedPosts[0]) {
+            props.setAttributes({selectedArticals:getSelectedArticles()})
+        }
+    },[selectedPosts])
 
     // set info after fetch 
     useEffect(() => {
@@ -175,6 +207,7 @@ const Edit = (props) => {
 
         // filter items by selected or not and push the values to an array
         if (data) {
+            console.log(data)
             data.map((artical) => {
                 const imgObj = artical._embedded["wp:featuredmedia"]
                 if (selectedPosts && selectedPosts[0]) {

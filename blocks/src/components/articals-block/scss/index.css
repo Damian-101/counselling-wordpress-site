@@ -122,20 +122,4 @@
         grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
-.sidebar-label {
-  padding: 1.2rem 0;
-  display: block;
-}
-
-.err {
-  color: #f63f3f;
-  font-weight: 500;
-}
-
-.btn--border {
-  background-color: transparent !important;
-  color: #252525 !important;
-  border: 2px solid #525050 !important;
-}
 /*# sourceMappingURL=index.css.map */

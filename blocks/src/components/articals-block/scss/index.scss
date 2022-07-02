@@ -1,0 +1,114 @@
+.skeleton {
+    opacity: .8;
+    animation: skeleton-loading 1s linear infinite alternate;
+    display: block;
+  }
+  
+  .skeleton-text {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    position: relative;
+    color: transparent;
+  }
+
+  .skeleton-para{
+    width: 100%;
+    height: 1rem !important;
+    &:last-child{
+        width: 80%;
+    }
+  }
+  
+  .skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+  
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 70%);
+    }
+  
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+  
+  
+
+.cs-all-articals-block{
+  margin: var(--spacing-500) 0;
+}
+.cs-all-articals {
+    display: grid;
+    grid-gap: 2rem;
+    a:hover {
+      color: inherit !important;
+    }
+  }
+
+.cs-all-articals__artial-bottom__para{
+    color:var(--paragraph-color);
+    font-weight:400;
+    max-width: 90%;
+    margin-top: 1rem !important;
+    p{
+        margin: 0 !important;
+    }
+}
+
+.cs-all-articals__link{
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+}
+
+.cs-all-articals__artical-img{
+    width: 100%;
+    // height: calc(200px + 21vw) !important;
+    aspect-ratio: 99/73;
+    object-fit: cover;
+    border-radius: 2rem;
+}
+
+.cs-all-articals__artical-bottom{
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.cs-all-articals__artical-bottom__title{
+    margin-bottom: 3rem;
+    margin-top: 1rem !important;
+    font-size: calc(var(--font-size-300) - 1rem) !important;
+    max-width: 90%;
+}
+
+.btn--load-more {
+    margin: 0 auto;
+      margin-top: 0px;
+    display: table;
+    margin-top: 3rem;
+  }
+
+.cs-all-articals__artical-img{
+    span{
+        height: 100%;
+    }
+}
+
+@media screen and (min-width:667px){
+    .cs-all-articals {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    .cs-all-articals__artical-img {
+        // height: calc(300px) !important;
+    }
+}
+
+@media screen and (min-width:1215px){
+    .cs-all-articals {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+}

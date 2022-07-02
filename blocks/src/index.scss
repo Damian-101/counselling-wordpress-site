@@ -1,5 +1,11 @@
 @import "./articals-block/scss/index.scss";
 
+.skeleton {
+    opacity: .8;
+    animation: skeleton-loading 1s linear infinite alternate;
+    display: block;
+  }
+
 .sidebar-label{
     padding: 1.2rem 0;
     display: block;
