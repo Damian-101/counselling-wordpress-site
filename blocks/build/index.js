@@ -4452,9 +4452,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _customize_toolbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./customize/toolbar */ "./src/post-img-block/customize/toolbar.js");
 
-//:::::::::::::To Do:::::::::::::::::
-// Run A Test (The Post Width / The Image Block)
-// Restyle The Block Popup Component (make responsive,change buttons)
 
 
 
@@ -4525,9 +4522,11 @@ const edit = props => {
 
   const selectImgUi = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "cs-article-img-popup"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "Article Image"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "cs-article-image__btns"
+      className: "cs-msg-ui"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "Article Image"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "cs-msg-ui__description"
+    }, "Choose A Image From Custom Or Featured Image"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "cs-msg-ui__button-wraper"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
       onSelect: onImageSelect,
       allowedTypes: ALLOWED_MEDIA_TYPES,
@@ -4536,12 +4535,12 @@ const edit = props => {
           open
         } = _ref;
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-          className: "btn-content btn--dark",
+          className: "cs-msg-ui__primary-btn",
           onClick: open
         }, "Add Image");
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "btn-content secondary--btn",
+      className: "cs-msg-ui__secondary-btn",
       onClick: onAddThumbnailImg
     }, "Add Thumbnail Image")), thumbnailImgError && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", {
       className: "err"
@@ -4553,7 +4552,7 @@ const edit = props => {
     // if Thumbnail Image Url still loading add skeleton 
     if (!thumbnailImageUrl) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "cs-article-img"
+        className: "cs-article-img skeleton"
       });
     }
 
@@ -4561,7 +4560,7 @@ const edit = props => {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
         src: thumbnailImageUrl.source_url,
         alt: thumbnailImageUrl.alt_text,
-        className: "cs-article-img"
+        className: "cs-article-img skeleton"
       });
     } else if (img && thumbnailImg === false) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {

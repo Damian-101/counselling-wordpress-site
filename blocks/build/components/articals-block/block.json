@@ -1,0 +1,21 @@
+{
+    "apiVersion": 2,
+    "name": "cs/articals-block",
+    "title": "Articals Block",
+    "category": "text",
+    "icon": "star",
+    "attributes":{
+        "align":{
+            "type":"string",
+            "default":"wide"
+        },
+        "infinitScroll":{
+            "type":"boolean",
+            "default":false
+        },
+        "showExcerpt":{
+            "type":"boolean",
+            "default":true
+        }
+    }
+}

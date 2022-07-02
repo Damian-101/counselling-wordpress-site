@@ -1,0 +1,33 @@
+{
+    "apiVersion": 2,
+    "name": "cs/recommended-articals-block",
+    "title": "Recommended Articals Block",
+    "category": "text",
+    "icon": "star",
+    "attributes":{
+        "selectedPosts":{
+            "type":"array"
+        },
+        "selectedItemsCount":{
+            "type":"number",
+            "default":0
+        },
+        "isArticalsSelected":{
+            "type":"boolean",
+            "default":false
+        },
+        "opensInNewTab":{
+            "type":"boolean",
+            "default":true
+        },
+        "url":{
+            "type":"string"
+        },
+        "title":{
+            "type":"string"
+        },
+        "selectedArticals":{
+            "type":"array"
+        }
+    }
+}

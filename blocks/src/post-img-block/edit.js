@@ -1,6 +1,3 @@
-//:::::::::::::To Do:::::::::::::::::
-// Run A Test (The Post Width / The Image Block)
-// Restyle The Block Popup Component (make responsive,change buttons)
 import "./scss/index.scss"
 import { select, subscribe } from '@wordpress/data';
 import {useBlockProps} from '@wordpress/block-editor';
@@ -60,19 +57,20 @@ const edit = (props) => {
 
     const selectImgUi = () => {
         return(
-            <div className='cs-article-img-popup'>
+            <div className='cs-msg-ui'>
                 <h4>Article Image</h4>
-                <div className="cs-article-image__btns">
+                <p className="cs-msg-ui__description">Choose A Image From Custom Or Featured Image</p>
+                <div className="cs-msg-ui__button-wraper">
                     <MediaUploadCheck>
                         <MediaUpload
                             onSelect={onImageSelect}
                             allowedTypes={ALLOWED_MEDIA_TYPES}
                             render={({ open }) => (
-                                <button className="btn-content btn--dark" onClick={open}>Add Image</button>
+                                <button className="cs-msg-ui__primary-btn" onClick={open}>Add Image</button>
                             )}
                         />
                     </MediaUploadCheck>
-                    <button className="btn-content secondary--btn" onClick={onAddThumbnailImg}>Add Thumbnail Image</button>
+                    <button className="cs-msg-ui__secondary-btn" onClick={onAddThumbnailImg}>Add Thumbnail Image</button>
                 </div>
                 {thumbnailImgError &&
                     <h6 className="err">{thumbnailImgError}</h6>
@@ -85,10 +83,10 @@ const edit = (props) => {
     const articleImageUi = () => {
         // if Thumbnail Image Url still loading add skeleton 
         if(!thumbnailImageUrl){
-            return <div className="cs-article-img"></div>
+            return <div className="cs-article-img skeleton"></div>
         }
         if(thumbnailImg === true && thumbnailImageUrl && thumbnailImageUrl !== null){
-            return <img src={thumbnailImageUrl.source_url} alt={thumbnailImageUrl.alt_text} className="cs-article-img"/>
+            return <img src={thumbnailImageUrl.source_url} alt={thumbnailImageUrl.alt_text} className="cs-article-img skeleton"/>
         }else if (img && thumbnailImg === false){
             return <img src={img.url} alt={img.alt} className="cs-article-img"/>
         }

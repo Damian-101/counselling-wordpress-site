@@ -1,6 +1,7 @@
 :root{
     --cs-block-bg-color:#f6f6f6;
     --cs-block-border-color:rgb(221, 221, 221);
+    --error-color:#FE5757;
 }
 
 @mixin cs-block-ui-border($borderColor){
@@ -10,11 +11,64 @@
 @mixin cs-block-ui{
     background-color: var(--cs-block-bg-color);
     border-radius: var(--border-radius);
-    padding: 5rem;
+    padding: 2rem;
+    @media screen and (min-width:588px) {
+        padding: 3rem;
+    }
+    @media screen and (min-width:1500px) {
+        padding: 5rem;
+    }
     min-height: 369px;
 }
 
 .cs-msg-ui{
     @include cs-block-ui;
     @include cs-block-ui-border(var(--cs-block-border-color));
+}
+
+////////////////DESCRIPTION///////////////
+.cs-msg-ui__description{
+    font-family: var(--primaryFont);
+    font-size: var(--font-size-100);
+    margin-top: 1rem;
+    color: var(--paragraph-color);
+}
+////////////////BUTTONS///////////////
+.cs-msg-ui__button-wraper{
+    margin-top: var(--spacing-400);
+}
+.cs-msg-ui button{
+    padding: 1.8rem 3rem;
+    border-radius: 150px;
+    font-family: var(--primaryFont);
+    min-width: 123px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+//primary button
+.cs-msg-ui__primary-btn{
+    background-color: #313131;
+    color: #fff;
+    border: none;
+    margin-right: 2rem;
+}
+//secondary button
+.cs-msg-ui__secondary-btn{
+    color: #000;
+    background-color: transparent;
+    border: 1px solid #313131;
+    margin-top: 1rem;
+}
+
+@media screen and (min-width:1030px){
+    .cs-msg-ui button{
+        padding: 2.6rem 3.2rem;
+        min-width: 190px;
+        font-size: 2.2rem;
+    }
+}
+////////////////ERROR/////////////////////
+.cs-msg-ui .err{
+    font-size: calc(var(--font-size-100) - .3rem);
+    margin-top: 2rem !important;
 }
