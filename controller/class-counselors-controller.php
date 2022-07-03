@@ -60,7 +60,6 @@ class Counselors_Controller extends Add_Counselors{
         Controller::add_view("counselor-name");
         Controller::add_view("qualification");
         Controller::add_view("add-img");
-        // Controller::add_view("submit-btn");
     }
 
 }

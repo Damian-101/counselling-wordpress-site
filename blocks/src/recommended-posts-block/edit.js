@@ -101,8 +101,8 @@ const Edit = (props) => {
 }
 
     useEffect(() => {
-        if (selectedPosts && selectedPosts[0]) {
-            props.setAttributes({selectedArticals:getSelectedArticles()})
+        if (selectedPosts && selectedPosts[0] && getSelectedArticles()) {
+            props.setAttributes({selectedArticals:[getSelectedArticles()]})
         }
     },[selectedPosts])
 

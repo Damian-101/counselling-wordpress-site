@@ -28,7 +28,7 @@ class Cs_Counselors_Block {
         $hideCounselorInfo = filter_var($attributes['hideCounselorInfo'], FILTER_VALIDATE_BOOLEAN);
         ob_start();
         ?>
-            <div class='cs-all-articals-block container'>
+            <div class='cs-counsellors-block container'>
                 <?php echo $content; ?>
                 <div class="cs-counsellors">
                     <div class="swiper-wrapper">

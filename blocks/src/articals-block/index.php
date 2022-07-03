@@ -18,6 +18,10 @@ class Cs_All_Articals_Block {
     }
 
     function add_scripts(){
+        if(has_block('cs/articals-block')){
+            wp_enqueue_script("articals-block-class",plugin_dir_url(__FILE__) . "js/class-all-articles.js",array());
+            wp_enqueue_script("articals-block-js",plugin_dir_url(__FILE__) . "js/articals-block.js",array());
+        }
         wp_localize_script( "articals-block-js", "post_count", [wp_count_posts('post')] );
         wp_localize_script( 'articals-block-js', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
     }

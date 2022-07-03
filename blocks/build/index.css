@@ -347,7 +347,7 @@
   padding: 5rem 3rem;
 }
 .options-block-lg__left h2 {
-  max-width: 600px;
+  max-width: 534px;
 }
 
 .options-block-lg__right {
@@ -732,6 +732,9 @@
   overflow: hidden;
 }
 
+.cs-counsellors {
+  overflow: hidden;
+}
 .cs-counsellors .swiper-wrapper {
   display: flex;
   margin-top: var(--spacing-400) !important;

@@ -5176,9 +5176,9 @@ const Edit = props => {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    if (selectedPosts && selectedPosts[0]) {
+    if (selectedPosts && selectedPosts[0] && getSelectedArticles()) {
       props.setAttributes({
-        selectedArticals: getSelectedArticles()
+        selectedArticals: [getSelectedArticles()]
       });
     }
   }, [selectedPosts]); // set info after fetch 
@@ -5512,13 +5512,13 @@ const Save = props => {
   const selectedPosts = props.attributes.selectedPosts;
   const selectedItemsCount = props.attributes.selectedItemsCount;
   const url = props.attributes.url;
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(); ////////////////////////////////////////////////////////
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+  console.log(typeof opensInNewTab); ////////////////////////////////////////////////////////
   /////////////////////Artical Ui/////////////////////////
   ////////////////////////////////////////////////////////
 
   const renderArticalsUi = () => {
     if (selectedArticals) {
-      console.log(selectedArticals);
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "cs-articals-block container",
         id: "cs-articals-block"
@@ -5529,7 +5529,8 @@ const Save = props => {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         href: url && url,
         className: "cs-articals-block__top-view-all__wraper",
-        target: opensInNewTab && opensInNewTab ? "_blank" : "_self"
+        target: opensInNewTab ? "_blank" : "_self",
+        rel: opensInNewTab ? "noopener" : ''
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", {
         className: "cs-articals-block__top-view-all__name"
       }, "VIEW ALL"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
