@@ -1,15 +1,3 @@
 Recommended Articles Block:
     find and fix why posts not adding
-fix block showing 'recover block'
-error
-
-
-    !!!!DO NOW
-Counselors Block:
-    Add Functionality the front end values::::DONE
-
-POST:
-Plan How to add styles ::::DONE
-create a image block ::::DONE
-add styles to core / blocks(ex: TEXT category blocks) ::::DONE
-Run A Test (The Post Width / The Image Block)
+    fix block showing 'recover block' error
