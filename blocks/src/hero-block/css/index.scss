@@ -1,5 +1,5 @@
 .cm-hero__content{
-    min-height: 50vh;
+    min-height: 65vh;
     background-color: rgb(29, 29, 29);
     display: flex;
     align-items: flex-end;
@@ -10,8 +10,14 @@
     height: 100%;
 }
 
+.cm-sub__heading{
+    font-weight: 400;
+    // color: #fff !important;
+    margin-bottom: 1rem;
+}
+
 .cm-hero__heading {
-    color: #fff;
+    // color: #fff;
     max-width: 535px;
     margin-bottom: 3rem;
     z-index: 3;

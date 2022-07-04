@@ -3479,6 +3479,7 @@ const Sidebar = _ref => {
     props
   } = _ref;
   const heroOverlayOpactiy = props.attributes.heroOverlayOpactiy;
+  const textColor = props.attributes.textColor;
 
   const setOverlayOpacity = value => {
     props.setAttributes({
@@ -3486,12 +3487,28 @@ const Sidebar = _ref => {
     });
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+  const onTextColorChange = value => {
+    props.setAttributes({
+      textColor: value
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Background"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
     label: "Overlay Opacity",
     value: heroOverlayOpactiy,
     onChange: setOverlayOpacity,
     min: 0,
     max: 100
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "sidebar-label"
+  }, "Change Text Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+    color: textColor,
+    defaultValue: "#000",
+    onChange: onTextColorChange
   }))));
 };
 
@@ -3576,10 +3593,18 @@ const edit = props => {
   const backgroundImage = props.attributes.backgroundImage;
   const heroOverlayOpactiy = props.attributes.heroOverlayOpactiy;
   const heroHeading = props.attributes.heroHeading;
+  const subHeading = props.attributes.subHeading;
+  const textColor = props.attributes.textColor;
 
   const onHeroHeadingChange = value => {
     props.setAttributes({
       heroHeading: value
+    });
+  };
+
+  const onSubHeadingChange = value => {
+    props.setAttributes({
+      subHeading: value
     });
   };
 
@@ -3592,8 +3617,17 @@ const edit = props => {
     class: "cm-hero__content",
     id: "cm_hero"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "container cm-hero__content-wraper"
+    class: "container cm-hero__content-wraper",
+    style: {
+      color: textColor
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h5",
+    value: subHeading,
+    className: "cm-sub__heading",
+    onChange: onSubHeadingChange,
+    placeholder: "Add Sub Heading"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",
     value: heroHeading,
     className: "cm-hero__heading",
@@ -3661,12 +3695,21 @@ const save = props => {
   const backgroundImage = props.attributes.backgroundImage;
   const heroOverlayOpactiy = props.attributes.heroOverlayOpactiy;
   const heroHeading = props.attributes.heroHeading;
+  const subHeading = props.attributes.subHeading;
+  const textColor = props.attributes.textColor;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     class: "cm-hero__content",
     id: "cm_hero"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "container cm-hero__content-wraper"
+    class: "container cm-hero__content-wraper",
+    style: {
+      color: textColor
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "h5",
+    className: "cm-sub__heading",
+    value: subHeading
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h1",
     className: "cm-hero__heading",
     value: heroHeading
@@ -23075,7 +23118,7 @@ module.exports = JSON.parse('{"apiVersion":2,"name":"cs/counselors-block","title
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"cs/hero-block","title":"Hero Block","category":"text","icon":"star","attributes":{"backgroundImage":{"type":"object"},"heroOverlayOpactiy":{"type":"number","default":40},"heroHeading":{"type":"string","default":"A Take A Journey With Us For A Healthy Mind"}}}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"cs/hero-block","title":"Hero Block","category":"text","icon":"star","attributes":{"backgroundImage":{"type":"object"},"heroOverlayOpactiy":{"type":"number","default":40},"heroHeading":{"type":"string","default":"A Take A Journey With Us For A Healthy Mind"},"subHeading":{"type":"string","default":"PSYCHIATRIC & THERAPY CLINIC"},"textColor":{"type":"string","default":"#fff"}}}');
 
 /***/ }),
 

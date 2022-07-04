@@ -1,10 +1,11 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::DONE:::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Recommended Articles Block : find and fix why posts not adding
-Recommended Articles Block : fix block showing 'recover block' error
+RECOMMENDED ARTICLES BLOCK : find and fix why posts not adding
+RECOMMENDED ARTICLES BLOCK : fix block showing 'recover block' error
 POST : Run A Test (The Post Width / The Image Block)
+HERO BLOCK : Add a color pick feature to the heading
+HERO BLOCK : Add a sub heading
 
 
 

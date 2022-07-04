@@ -15,6 +15,14 @@
         "heroHeading":{
             "type":"string",
             "default":"A Take A Journey With Us For A Healthy Mind"
+        },
+        "subHeading":{
+            "type":"string",
+            "default":"PSYCHIATRIC & THERAPY CLINIC"
+        },
+        "textColor":{
+            "type":"string",
+            "default":"#fff"
         }
     }
 }

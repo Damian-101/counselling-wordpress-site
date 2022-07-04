@@ -4,10 +4,13 @@ const save = (props) => {
     const backgroundImage = props.attributes.backgroundImage
     const heroOverlayOpactiy = props.attributes.heroOverlayOpactiy
     const heroHeading  = props.attributes.heroHeading
+    const subHeading = props.attributes.subHeading
+    const textColor = props.attributes.textColor
     return(
         <div {...blockProps}>
             <section class="cm-hero__content" id="cm_hero">
-                <div class="container cm-hero__content-wraper">
+                <div class="container cm-hero__content-wraper" style={{color:textColor}}>
+                <RichText.Content tagName="h5" className="cm-sub__heading" value={ subHeading } />
                     <RichText.Content tagName="h1" className="cm-hero__heading" value={ heroHeading } />
                     <InnerBlocks.Content/>
                 </div>

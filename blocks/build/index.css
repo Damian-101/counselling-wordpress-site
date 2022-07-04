@@ -2,7 +2,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/hero-block/css/index.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************/
 .cm-hero__content {
-  min-height: 50vh;
+  min-height: 65vh;
   background-color: rgb(29, 29, 29);
   display: flex;
   align-items: flex-end;
@@ -13,8 +13,12 @@
   height: 100%;
 }
 
+.cm-sub__heading {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
 .cm-hero__heading {
-  color: #fff;
   max-width: 535px;
   margin-bottom: 3rem;
   z-index: 3;
