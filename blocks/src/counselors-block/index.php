@@ -28,29 +28,29 @@ class Cs_Counselors_Block {
         $hideCounselorInfo = filter_var($attributes['hideCounselorInfo'], FILTER_VALIDATE_BOOLEAN);
         ob_start();
         ?>
-            <div class='cs-counsellors-block container'>
-                <?php echo $content; ?>
-                <div class="cs-counsellors">
-                    <div class="swiper-wrapper">
-                        <?php
-                            while ( $posts->have_posts() ) : $posts->the_post();
-                            ?>
-                            <div class="swiper-slide">
-                                <div class='cs-counsellors__counsellor' id="cs-articals-block">
-                                <img src='<?php echo get_post_custom_values('img-url',$posts->ID)[0] ?>' class="cs-counsellors__counsellor-img" />
-                                <?php if($showCounselorInfo){?>
-                                    <h5 class="cs-counsellors__counsellor-name"><?php the_title(); ?></h5>
-                                <?php } ?>
-                                <?php if($showCounselorInfo === true && $hideCounselorInfo === false){?>
-                                    <h6 class="cs-counsellors__counsellor-qualification"><?php echo get_post_custom_values('qualification',$posts->ID)[0] ?></h6>
-                                <?php } ?>
+            <div class='cs-counsellors-block'>
+                    <?php echo $content; ?>
+                    <div class="cs-counsellors">
+                        <div class="swiper-wrapper">
+                            <?php
+                                while ( $posts->have_posts() ) : $posts->the_post();
+                                ?>
+                                <div class="swiper-slide">
+                                    <div class='cs-counsellors__counsellor' id="cs-articals-block">
+                                    <img src='<?php echo get_post_custom_values('img-url',$posts->ID)[0] ?>' class="cs-counsellors__counsellor-img" />
+                                    <?php if($showCounselorInfo){?>
+                                        <h5 class="cs-counsellors__counsellor-name"><?php the_title(); ?></h5>
+                                    <?php } ?>
+                                    <?php if($showCounselorInfo === true && $hideCounselorInfo === false){?>
+                                        <h6 class="cs-counsellors__counsellor-qualification"><?php echo get_post_custom_values('qualification',$posts->ID)[0] ?></h6>
+                                    <?php } ?>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php
-                        endwhile;
-                    ?>
+                            <?php
+                            endwhile;
+                        ?>
+                        </div>
                     </div>
-                </div>
             </div>
         <?php
         return ob_get_clean();

@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.wp-block-cs-hero-block {
+  margin: 0 calc(var(--container) / -1);
+}
+
 .cm-sub__heading {
   font-weight: 400;
   margin-bottom: 1rem;
@@ -354,12 +358,17 @@
   max-width: 534px;
 }
 
+.editor {
+  background-color: rgb(184, 184, 184);
+}
+
 .options-block-lg__right {
   width: 100%;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
-  min-height: 326px;
   position: relative;
-  background-color: rgb(184, 184, 184);
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 66461/61865;
 }
 
 .options-block-lg__right img {
@@ -732,7 +741,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/counselors-block/scss/index.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************/
 .cs-counsellors-block {
-  margin: var(--spacing-500) 0;
+  margin-top: var(--spacing-500);
   overflow: hidden;
 }
 
@@ -908,7 +917,6 @@
 
 .cs-articals-block {
   margin-top: var(--spacing-500);
-  margin-bottom: var(--spacing-500);
 }
 
 .cs-heading {

@@ -68,7 +68,6 @@ const Edit = (props) => {
             setIsCustomerOptionsChanged(true)
         }
         // if we have old customerOptionsValue saved before
-        console.log(oldSavedOptionsCount,values.length)
         if(oldSavedOptionsCount !== 0 && oldSavedOptionsCount !== values.length && getOldOptionCount() !== values.length){
             if(getOldOptionCount() !== 0){
                 setOldOptionsCount(values.length)
@@ -114,10 +113,8 @@ const Edit = (props) => {
     // render loading screen 
     const renderLoadingScreen = () => {
         return(
-            <div className="container">
-                <div className="customer-options-block-content container">
-                    <CircleLoader loading={isLoading} size={40} />
-                </div>
+            <div className="customer-options-block-content">
+                <CircleLoader loading={isLoading} size={40} />
             </div>
         )
     }
@@ -156,7 +153,7 @@ const Edit = (props) => {
         }
         if(optionsCount && data && isCustomerOptionsChanged === false){
             return(
-                <div className="customer-options-block container">
+                <div className="customer-options-block">
                     <InnerBlocks template={renderOptionsLayout()}/>
                 </div>
             )

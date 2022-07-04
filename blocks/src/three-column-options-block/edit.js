@@ -9,10 +9,8 @@ const Edit = () => {
     ]
     return(
         <div {...blockprops}>
-            <div className="container">
-                <div className="cs-three-column-options-block__content">
-                    <InnerBlocks template={TEMPLATE}/>
-                </div>
+            <div className="cs-three-column-options-block__content">
+                <InnerBlocks template={TEMPLATE}/>
             </div>
         </div>
     )

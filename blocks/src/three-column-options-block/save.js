@@ -3,10 +3,8 @@ const Save = () => {
     const blockprops = useBlockProps.save()
     return(
         <div {...blockprops}>
-            <div className="container">
-                <div className="cs-three-column-options-block__wraper">
-                    <InnerBlocks.Content/>
-                </div>
+            <div className="cs-three-column-options-block__wraper">
+                <InnerBlocks.Content/>
             </div>
         </div>
     )

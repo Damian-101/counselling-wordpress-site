@@ -9,11 +9,12 @@ const Save = (props) => {
         <>
             <div {...blockprops}>
                 <div className="sm-option-block-sm__content">
-                    <div className="sm-option-block-sm__top">
-                        {optionImg &&
-                            <img src={optionImg.url} />
-                        }
-                    </div>
+                    {!optionImg &&
+                        <div className="sm-option-block-sm__top"></div>
+                    }
+                    {optionImg &&
+                            <img src={optionImg.url} className="sm-option-block-sm__top"/>
+                    }
                     <div className="sm-option-block-sm__bottom" style={{backgroundColor:optionBgColor,color:textColor}}>
                         <RichText.Content
                             tagName="h4"

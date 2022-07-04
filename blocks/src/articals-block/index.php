@@ -32,7 +32,7 @@ class Cs_All_Articals_Block {
     function block_content( $attributes ) {
         ob_start();
             ?>
-            <div class='cs-all-articals-block container'>
+            <div class='cs-all-articals-block'>
                 <div class='cs-all-articals' id="cs_all_articals" data-align="<?php echo $attributes['align'] ?>" data-ininit-scroll = "<?php echo $attributes['infinitScroll'] ? 1 : 0 ?>" data-show-excerpt = "<?php echo $attributes['showExcerpt'] ? 1 : 0 ?>">
                 </div>
                 <div id="cs_pagination"></div>

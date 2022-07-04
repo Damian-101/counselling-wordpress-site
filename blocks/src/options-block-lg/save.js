@@ -15,11 +15,12 @@ const save = (props) => {
                     <RichText.Content tagName="h2" value={optionName} />
                     <InnerBlocks.Content />
                 </div>
-                <div className="options-block-lg__right">
-                    {optionImg &&
-                        <img src={optionImg.url} alt={optionImg.alt} />
-                    }
-                </div>
+                {!optionImg &&
+                    <div className="options-block-lg__right"></div>
+                }
+                {optionImg &&
+                    <img src={optionImg.url} alt={optionImg.alt} className="options-block-lg__right"/>
+                }
             </section>
         )
     }
@@ -28,11 +29,12 @@ const save = (props) => {
     const rightTextLayout = () => {
         return (
             <section className="options-block-lg right-text" style={{ backgroundColor: optionBgColor }}>
-                <div className="options-block-lg__right">
-                    {optionImg &&
-                        <img src={optionImg.url} alt={optionImg.alt} />
+                    {!optionImg &&
+                        <div className="options-block-lg__right"></div>
                     }
-                </div>
+                    {optionImg &&
+                        <img src={optionImg.url} alt={optionImg.alt} className="options-block-lg__right"/>
+                    }
                 <div className="options-block-lg__left" style={{ color: textColor }}>
                     <RichText.Content tagName="h2" value={optionName} />
                     <InnerBlocks.Content />
@@ -50,9 +52,7 @@ const save = (props) => {
     }
     return (
         <div {...blockProps}>
-            <div className="container" data-layout={layoutName}>
-                {renderUi()}
-            </div>
+            {renderUi()}
         </div>
     )
 }

@@ -10,6 +10,10 @@
     height: 100%;
 }
 
+.wp-block-cs-hero-block{
+    margin: 0 calc(var(--container) / -1);
+}
+
 .cm-sub__heading{
     font-weight: 400;
     // color: #fff !important;

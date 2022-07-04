@@ -73,10 +73,12 @@ const Edit = (props) => {
     const renderArticalsUi = () => {
         return(
             <>           
-            <div class='cs-all-articals-block container'>
-                <div class='cs-all-articals' id="cs_all_articals">
+            <div class='cs-all-articals-block'>
+                <div className=''>
+                    <div class='cs-all-articals' id="cs_all_articals">
+                    </div>
+                    <div id="cs_pagination"></div>
                 </div>
-                <div id="cs_pagination"></div>
                 {/* <button class="btn-content btn--dark btn--load-more btn--border" id="load_posts">Load More</button> */}
             </div>
             </>
