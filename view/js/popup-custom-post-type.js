@@ -1,7 +1,10 @@
-const fetchPosts = () => {
+const fetchPosts = (popUpLinkType) => {
     const domainName = window.location.origin
     const per_page = "&per_page=" + post_count[0].publish
-    const url = domainName + '/wp-json/wp/v2/posts?_embed' + per_page
+    let url = domainName + '/wp-json/wp/v2/pages'
+    if(popUpLinkType === 'post'){
+        url = domainName + '/wp-json/wp/v2/posts?_embed' + per_page
+    }
     return new Promise((resolve, reject) => {
         fetch(url)
             .then(res => {
@@ -26,19 +29,19 @@ const fetchPosts = () => {
 
 const addValue = async (popUpLinkType) => {
     const redirectButton = document.getElementById('cs_redirect_button_link')
-    const posts = await fetchPosts()
-    if(posts && redirectButton){
-        posts.map(post => {
-            const selectTag = document.createElement("option");
-            selectTag.innerText = post.title.rendered
-            redirectButton.appendChild(selectTag)
-
-        })
-    }
-    if(!posts){
+    const posts = await fetchPosts(popUpLinkType)
+    if(redirectButton){
         const selectTag = document.createElement("option");
-        selectTag.className="skeleton"
+        selectTag.innerText = 'Select A Option'
         redirectButton.appendChild(selectTag)
+        if(posts){
+            posts.map(post => {
+                const selectTag = document.createElement("option");
+                selectTag.innerText = post.title.rendered
+                selectTag.value = post.link
+                redirectButton.appendChild(selectTag)
+            })
+        }
     }
 }
 
@@ -54,17 +57,20 @@ const inputType = (popUpLinkType) => {
             const selectTag = document.createElement("input");
             selectTag.id = 'cs_redirect_button_link'
             selectTag.type = 'text'
+            selectTag.className="regular-text"
             redirectButtonWraper.replaceChild(selectTag, redirectButton)
         }
         if (popUpLinkType === 'page') {
             const selectTag = document.createElement("select");
             selectTag.id = 'cs_redirect_button_link'
+            selectTag.className="regular-text"
             redirectButtonWraper.replaceChild(selectTag, redirectButton)
             addValue(popUpLinkType)
         }
         if (popUpLinkType === 'post') {
             const selectTag = document.createElement("select");
             selectTag.id = 'cs_redirect_button_link'
+            selectTag.className="regular-text"
             redirectButtonWraper.replaceChild(selectTag, redirectButton)
             addValue(popUpLinkType)
         }

@@ -83,7 +83,7 @@ class Popups_Controller extends Add_Popups{
                                 <label>Redirect Button</label>
                             </th>
                             <td id="cs_redirect_button_link_wraper">
-                                <input type="url" name="popup_redirect_url" value='<?php echo self::$popupRedirectUrl?>' id="cs_redirect_button_link"/>
+                                <input type="url" name="popup_redirect_url" value='<?php echo self::$popupRedirectUrl?>' id="cs_redirect_button_link" class='regular-text'/>
                                 <select id="popup_redirect_url_type_select" name="popup_redirect_url_type" value='<?php echo self::$popupRedirectUrlType?> '>
                                     <option value="link" <?php if(self::$popupRedirectUrlType === 'link') : ?> selected="selected" <?php endif;?>>Link</option>
                                     <option value="post" <?php if(self::$popupRedirectUrlType === 'post') : ?> selected="selected" <?php endif;?>>Post</option>
