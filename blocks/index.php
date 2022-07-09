@@ -29,6 +29,8 @@ class Cs_Blocks_Config {
 
 new Cs_Blocks_Config;
 
+
 require_once(plugin_dir_path(__FILE__) . "src/articals-block/index.php");
 require_once(plugin_dir_path(__FILE__) . "src/counselors-block/index.php");
 require_once(plugin_dir_path(__FILE__) . "src/post-img-block/index.php");
+// require_once(plugin_dir_path(__FILE__) . "wpforms-custom-snippets.php");

@@ -1,0 +1,13 @@
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    display: block;
+    opacity: 1;
+  }
+  
+  .skeleton-text {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    position: relative;
+    color: transparent;
+  }

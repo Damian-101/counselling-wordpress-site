@@ -5,9 +5,10 @@ class Customer_Options_Controller extends Add_Customer_Options{
 
     public static $imgUrl;
     public static $customerOptionName;
+    public static $imageSize = "610 x 610";
 
     function save_fields($post_id){
-        if($_POST['customer_option_name']){
+        if(isset($_POST['customer_option_name'])){
             update_post_meta(
                 $post_id ,
                 "customer-option-name",

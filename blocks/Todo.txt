@@ -1,15 +1,6 @@
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::DONE:::::::::::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-HERO BLOCK : Add a color pick feature to the heading
-HERO BLOCK : Add a sub heading
-OPTIONS BLOCK : Make Option Block Images Get Bigger When screen sizes change (Mobile -> Desktop) 
-COMMON STYLING : Add max width size for components
-COUNSELORS BLOCK : Fix full screen size not showing 4 items per row when screen size changed
-COMMON BLOCKS : Add Text Customization Options (color:Add Paragraph Color / Text Weight / ) Note : Don't Add Size
-COMMON BLOCKS : Add a alignment options (Align Wide / Align Full)
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::TODO:::::::::::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ARTICLES BLOCK : Plan the articles block
+Find A Good Plugin To Manage Emails (MAIN GOAL = TO REPLY A SESSION DATE)
+Create a custom fields for locations
+Add A Id To every button
+Find A Working method to space sections
+//Create A Cutom Post type for The Popup 
+    And Test the feature

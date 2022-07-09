@@ -1,0 +1,73 @@
+@mixin field_label{
+    font-family: var(--primaryFont);
+    font-size: var(--font-size-100);
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+@mixin input_field{
+    height: 64px;
+    border-radius: 13px;
+    border: 1px solid #817B7B;
+    font-size: var(--font-size-100);
+    font-family: var(--primaryFont) !important;
+    padding-left: 1rem;
+    font-weight: 400;
+    color:var(--paragraph-color);
+    background-color: #fff !important;
+}
+
+
+//Input Fields
+.wpforms-container{
+    margin-top: var(--spacing-400);
+    .wpforms-field{
+        margin-bottom: 1.5rem;
+    }
+    .wpforms-field-label{
+        @include field_label;
+    }
+    input,textarea,select,option{
+        @include input_field;
+    }
+    ul{
+        margin-top: 1rem;
+        padding: inherit !important;
+        li{
+            font-family: var(--primaryFont);
+            font-size: var(--font-size-100);
+            margin: 1rem 0;
+            input{
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+    }
+    .wpforms-field-sublabel{
+        font-family: var(--primaryFont);
+        font-size: calc(var(--font-size-100)) !important;
+        color: var(--paragraph-color);
+        margin-top: 1rem;
+    }
+    .wpforms-error{
+        font-family: var(--primaryFont);
+        font-size: var(--font-size-100) !important;
+    }
+}
+
+@supports (-moz-appearance:none) {
+    select
+    {
+        -moz-appearance:none !important;
+        background-color: transparent;
+        font-family: var(--primaryFont);
+    }
+  }
+
+//Submit Button
+//layout
+//error messages
+.wpforms-field-description{
+    font-family: var(--primaryFont);
+    font-size: calc(var(--font-size-100) - .5rem) !important;
+    color:var(--paragraph-color)
+}

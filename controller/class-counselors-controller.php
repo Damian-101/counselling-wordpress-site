@@ -6,23 +6,24 @@ class Counselors_Controller extends Add_Counselors{
     public static $imgUrl;
     public static $counselorName;
     public static $qualification;
+    public static $imageSize = "210 x 210";
 
     function save_fields($post_id){
-        if($_POST['counselor_name']){
+        if(isset($_POST['counselor_name'])){
             update_post_meta(
                 $post_id ,
                 "counselor-name",
                 $_POST['counselor_name']
             );
         }
-        if($_POST['qualification']){
+        if(isset($_POST['qualification'])){
             update_post_meta(
                 $post_id ,
                 "qualification",
                 $_POST['qualification']
             );
         }
-        if($_POST['img_url']){
+        if(isset($_POST['img_url'])){
             update_post_meta(
                 $post_id ,
                 "img-url",

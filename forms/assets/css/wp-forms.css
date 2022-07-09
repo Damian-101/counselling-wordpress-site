@@ -1,0 +1,61 @@
+.wpforms-container {
+  margin-top: var(--spacing-400);
+}
+.wpforms-container .wpforms-field {
+  margin-bottom: 1.5rem;
+}
+.wpforms-container .wpforms-field-label {
+  font-family: var(--primaryFont);
+  font-size: var(--font-size-100);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.wpforms-container input, .wpforms-container textarea, .wpforms-container select, .wpforms-container option {
+  height: 64px;
+  border-radius: 13px;
+  border: 1px solid #817B7B;
+  font-size: var(--font-size-100);
+  font-family: var(--primaryFont) !important;
+  padding-left: 1rem;
+  font-weight: 400;
+  color: var(--paragraph-color);
+  background-color: #fff !important;
+}
+.wpforms-container ul {
+  margin-top: 1rem;
+  padding: inherit !important;
+}
+.wpforms-container ul li {
+  font-family: var(--primaryFont);
+  font-size: var(--font-size-100);
+  margin: 1rem 0;
+}
+.wpforms-container ul li input {
+  width: 20px !important;
+  height: 20px !important;
+}
+.wpforms-container .wpforms-field-sublabel {
+  font-family: var(--primaryFont);
+  font-size: calc(var(--font-size-100)) !important;
+  color: var(--paragraph-color);
+  margin-top: 1rem;
+}
+.wpforms-container .wpforms-error {
+  font-family: var(--primaryFont);
+  font-size: var(--font-size-100) !important;
+}
+
+@supports (-moz-appearance: none) {
+  select {
+    -moz-appearance: none !important;
+    background-color: transparent;
+    font-family: var(--primaryFont);
+  }
+}
+.wpforms-field-description {
+  font-family: var(--primaryFont);
+  font-size: calc(var(--font-size-100) - 0.5rem) !important;
+  color: var(--paragraph-color);
+}
+
+/*# sourceMappingURL=wp-forms.css.map */
