@@ -1,20 +1,20 @@
 {
-    "apiVersion": 2,
-    "name": "cs/counselors-block",
-    "title": "Counselors Block",
-    "category": "text",
-    "icon": "star",
-    "attributes":{
-        "data":{
-            "type":"array"
-        },
-        "showCounselorInfo":{
-            "type":"array",
-            "default":true
-        },
-        "hideCounselorInfo":{
-            "type":"boolean",
-            "default":false
-        }
+  "apiVersion": 2,
+  "name": "cs/counselors-block",
+  "title": "Counselors Block",
+  "category": "text",
+  "icon": "star",
+  "attributes": {
+    "data": {
+      "type": "array"
+    },
+    "showCounselorInfo": {
+      "type": "array",
+      "default": true
+    },
+    "hideCounselorInfo": {
+      "type": "boolean",
+      "default": false
     }
+  }
 }

@@ -10,9 +10,9 @@ class Post_Img {
         ob_start();
             ?>
             <?php if($attributes['thumbnailImg'] === true) : ?>
-                <img src='<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>' alt='<?php echo get_post_meta ( get_the_ID(), '_wp_attachment_image_alt', true ); ?>' class='cs-article-img'/>
+                <img src='<?php echo get_the_post_thumbnail_url(get_the_ID()) ?>' alt='<?php echo get_post_meta ( get_the_ID(), '_wp_attachment_image_alt', true ); ?>' class='cs-article-img craft-theme'/>
             <?php elseif(isset($attributes['img']) === true  ) : ?>
-                <img src='<?php echo $attributes['img']['url']?>' alt='<?php echo $attributes['img']['alt']?>' class='cs-article-img'/>
+                <img src='<?php echo $attributes['img']['url']?>' alt='<?php echo $attributes['img']['alt']?>' class='cs-article-img craft-theme'/>
             <?php endif ?>
         <?php
         return ob_get_clean();

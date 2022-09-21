@@ -32,18 +32,23 @@ const insertPopup = () => {
 jQuery(document).ready(function($) {
     window.send_to_editor = function(html) {
         imgurl = jQuery(html).attr('src')
-        // jQuery('#item_image').val(imgurl);
-        insertImage(imgurl)
+            insertImage(imgurl)
         closePopUp()
     }
 })
 
+// alert("j")
 const insertImage = (imgurl) => {
-    // image placeholder
-    document.getElementById("prevImg").style.backgroundImage = `url(${imgurl})`
-    // hidden input
-    document.getElementById("imgUrl").value = imgurl
+    console.log(imgurl)
+    if(imgurl){
+        // image placeholder
+        document.getElementById("prevImg").style.backgroundImage = `url(${imgurl})`
+        // hidden input
+        document.getElementById("imgUrl").value = imgurl
+    }
 }
+
+// alert('hello')
 
 //add open add media popup
 const onAddMediaClick = (e) => {

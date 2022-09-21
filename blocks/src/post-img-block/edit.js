@@ -57,7 +57,7 @@ const edit = (props) => {
 
     const selectImgUi = () => {
         return(
-            <div className='cs-msg-ui'>
+            <div className='cs-msg-ui craft-theme'>
                 <h4>Article Image</h4>
                 <p className="cs-msg-ui__description">Choose A Image From Custom Or Featured Image</p>
                 <div className="cs-msg-ui__button-wraper">
@@ -83,7 +83,7 @@ const edit = (props) => {
     const articleImageUi = () => {
         // if Thumbnail Image Url still loading add skeleton 
         if(!thumbnailImageUrl){
-            return <div className="cs-article-img skeleton"></div>
+            return <div className="cs-article-img skeleton craft-theme"></div>
         }
         if(thumbnailImg === true && thumbnailImageUrl && thumbnailImageUrl !== null){
             return <img src={thumbnailImageUrl.source_url} alt={thumbnailImageUrl.alt_text} className="cs-article-img skeleton"/>

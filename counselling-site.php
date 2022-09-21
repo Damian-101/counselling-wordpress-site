@@ -38,3 +38,13 @@ require_once(PLUGIN_DIR_PATH . "routes/class-counsellor-route.php");
  * Blocks
  */
 require_once(PLUGIN_DIR_PATH . "blocks/index.php");
+
+/**
+ * Forms
+ */
+// require_once(PLUGIN_DIR_PATH . "forms/interface-cs-form-feature.php");
+// require_once(PLUGIN_DIR_PATH . "forms/class-cs-forms.php");
+// require_once(PLUGIN_DIR_PATH . "forms/class-cs-forms-popup.php");
+require_once(PLUGIN_DIR_PATH . "forms/class-cs-wpforms.php");
+
+

@@ -11,16 +11,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/jest": "^27.4.1",
-    "@wordpress/core-data": "^4.10.0",
-    "@wordpress/element": "^4.8.0",
-    "@wordpress/icons": "^8.3.0",
-    "@wordpress/scripts": "^22.5.0",
-    "dompurify": "^2.3.8",
-    "jest": "^28.0.3",
+    "@types/jest": "^29.0.3",
+    "@wordpress/core-data": "^5.0.0",
+    "@wordpress/element": "^4.15.0",
+    "@wordpress/icons": "^9.8.0",
+    "@wordpress/scripts": "^24.1.0",
+    "dompurify": "^2.4.0",
+    "jest": "^29.0.3",
     "react-loading-screen": "^0.0.17",
     "react-loading-skeleton": "^3.1.0",
-    "react-spinners": "^0.11.0",
-    "swiper": "^8.2.1"
+    "react-spinners": "^0.13.4",
+    "swiper": "^8.4.2"
+  },
+  "devDependencies": {
+    "crafts-components-library": "^2.2.0"
   }
 }

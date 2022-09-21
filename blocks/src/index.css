@@ -1,8 +1,8 @@
 .skeleton {
-  opacity: .8;
   -webkit-animation: skeleton-loading 1s linear infinite alternate;
           animation: skeleton-loading 1s linear infinite alternate;
   display: block;
+  opacity: 1;
 }
 
 .skeleton-text {
@@ -121,6 +121,13 @@
     -ms-grid-columns: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.skeleton {
+  opacity: .8;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  display: block;
 }
 
 .sidebar-label {

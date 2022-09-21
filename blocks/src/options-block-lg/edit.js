@@ -31,7 +31,7 @@ const edit = (props) => {
     //right text layout UI
     const leftTextLayout = () => {
         return (
-                <div className="options-block-lg left-text" style={{ backgroundColor: optionBgColor }} data-option-name="options block lg">
+                <div className="options-block-lg left-text craft-theme" style={{ backgroundColor: optionBgColor }} data-option-name="options block lg">
                     <div className="options-block-lg__left" style={{ color: textColor }}>
                         <RichText
                             tagName="h2"
@@ -55,7 +55,7 @@ const edit = (props) => {
     //left text layout UI
     const rightTextLayout = () => {
         return (
-                <div className="options-block-lg right-text" style={{ backgroundColor: optionBgColor }} data-option-name="options block lg">
+                <div className="options-block-lg right-text craft-theme" style={{ backgroundColor: optionBgColor }} data-option-name="options block lg">
                     {!optionImg &&
                         <div className="options-block-lg__right editor"></div>
                     }

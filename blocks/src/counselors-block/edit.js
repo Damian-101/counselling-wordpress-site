@@ -112,7 +112,7 @@ const Edit = (props) => {
             })
         }
         return (
-            <div className="cs-counsellors-block">
+            <div className="cs-counsellors-block craft-theme">
                     {/* heading  */}
                     <InnerBlocks template={TEMPLATE} className="cs-counsellors cs-heading" templateLock="all" />
                     <div className="cs-counsellors">

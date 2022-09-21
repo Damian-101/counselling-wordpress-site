@@ -9,7 +9,8 @@ const Toolbar = ({ props }) => {
     const optionBgColor = props.attributes.optionBgColor
     const opensInNewTab = props.attributes.opensInNewTab
     const url = props.attributes.url
-    const title = props.attributes.title
+    const title = props.attributes.title 
+    const isConfig = props.attributes.isConfig
     // open the popover
     const toggleVisible = () => {
         setIsLinkPopUp((state) => !state);
@@ -26,7 +27,7 @@ const Toolbar = ({ props }) => {
         <>
             <BlockControls>
                 <ToolbarGroup>
-                    <button className="components-button block-editor-block-mover__drag-handle has-icon" onClick={() => {props.setAttributes({isArticalsSelected:false})}}>
+                    <button className="components-button block-editor-block-mover__drag-handle has-icon" onClick={() => {props.setAttributes({isConfig:!isConfig})}}>
                         Select Posts To Show
                     </button>
                 </ToolbarGroup>

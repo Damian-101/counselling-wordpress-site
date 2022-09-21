@@ -1,6 +1,4 @@
-Find A Good Plugin To Manage Emails (MAIN GOAL = TO REPLY A SESSION DATE)
-Create a custom fields for locations
-Add A Id To every button
-Find A Working method to space sections
-//Create A Cutom Post type for The Popup 
-    And Test the feature
+Components Not Re rendering on search
+Refactor The Code
+fix the validation issue
+Create The Front End Of The Recommeded Articles Block

@@ -19,9 +19,3 @@ require_once(PLUGIN_DIR_PATH . "controller/class-customer-options-controller.php
 require_once(PLUGIN_DIR_PATH . "model/class-manage-counselors.php");
 require_once(PLUGIN_DIR_PATH . "hooks/class-add-counselors.php");
 require_once(PLUGIN_DIR_PATH . "controller/class-counselors-controller.php");
-
-/**
- * Popup
- */
-require_once(PLUGIN_DIR_PATH . "hooks/class-add-popups.php");
-require_once(PLUGIN_DIR_PATH . "controller/class-popups-controller.php");

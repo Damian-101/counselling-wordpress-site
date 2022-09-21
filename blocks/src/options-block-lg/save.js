@@ -10,7 +10,7 @@ const save = (props) => {
     //left text layout
     const leftTextLayout = () => {
         return (
-            <section className="options-block-lg left-text" style={{ backgroundColor: optionBgColor }}>
+            <section className="options-block-lg left-text craft-theme" style={{ backgroundColor: optionBgColor }}>
                 <div className="options-block-lg__left" style={{ color: textColor }}>
                     <RichText.Content tagName="h2" value={optionName} />
                     <InnerBlocks.Content />
@@ -28,7 +28,7 @@ const save = (props) => {
     //right text layout
     const rightTextLayout = () => {
         return (
-            <section className="options-block-lg right-text" style={{ backgroundColor: optionBgColor }}>
+            <section className="options-block-lg right-text craft-theme" style={{ backgroundColor: optionBgColor }}>
                     {!optionImg &&
                         <div className="options-block-lg__right"></div>
                     }

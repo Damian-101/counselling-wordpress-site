@@ -1,6 +1,9 @@
 .cs-counsellors-block{
     margin-top: var(--spacing-500);
     overflow: hidden;
+    h2{
+        margin-top: 0 !important;
+    }
 }
 .cs-counsellors {
     overflow: hidden;

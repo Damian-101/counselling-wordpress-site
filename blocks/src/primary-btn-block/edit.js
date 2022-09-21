@@ -32,7 +32,7 @@ const Edit = (props) => {
         <div {...blockprops}>
         <BtnToolbar props = {props}/>
         <Sidebar props = {props} buttonOptions = {AddButtonOptions}/>
-            <button className={`btn-content btn-editor ${buttonType && buttonType}`}>
+            <button className={`btn-content btn-editor ${buttonType && buttonType} craft-theme`}>
                 <RichText
                     value={buttonName}
                     placeholder="Button Name"

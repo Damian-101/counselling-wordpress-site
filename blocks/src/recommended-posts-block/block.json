@@ -5,29 +5,35 @@
     "category": "text",
     "icon": "star",
     "attributes":{
-        "selectedPosts":{
-            "type":"array"
-        },
-        "selectedItemsCount":{
-            "type":"number",
-            "default":0
-        },
-        "isArticalsSelected":{
+        "isConfig":{
             "type":"boolean",
-            "default":false
+            "default":true
         },
         "opensInNewTab":{
             "type":"boolean",
-            "default":true
+            "default":false
         },
         "url":{
             "type":"string"
         },
-        "title":{
-            "type":"string"
+        "staticPosts":{
+            "type":"array",
+            "default":[]
         },
-        "selectedArticals":{
-            "type":"array"
+        "staticPostsPreLoadData":{
+            "type":"array",
+            "default":[]
+        },
+        "dynamicPosts":{
+            "type":"object"
+        },
+        "isDynamicArticles":{
+            "type":"boolean",
+            "default":false
+        },
+        "dynamicPostSelectCount":{
+            "type":"number",
+            "default":0
         }
     }
 }

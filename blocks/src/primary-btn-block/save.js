@@ -9,7 +9,7 @@ const Save = (props) => {
     return(
         <div {...blockProps}>
             <form action={url && url} target = {opensInNewTab ? "__blank" : null}>
-                <button className={`btn-content ${buttonType && buttonType}`}>
+                <button className={`btn-content ${buttonType && buttonType} craft-theme`}>
                     <RichText.Content value={ buttonName } />
                 </button>
             </form>

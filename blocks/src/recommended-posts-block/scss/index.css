@@ -1,19 +1,82 @@
 :root {
   --cs-block-bg-color:#f6f6f6;
   --cs-block-border-color:rgb(221, 221, 221);
+  --error-color:#FE5757;
 }
 
 .cs-msg-ui {
   background-color: var(--cs-block-bg-color);
   border-radius: var(--border-radius);
-  padding: 5rem;
+  padding: 2rem;
   min-height: 369px;
   border: 1rem solid var(--cs-block-border-color);
 }
 
+@media screen and (min-width: 588px) {
+  .cs-msg-ui {
+    padding: 3rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .cs-msg-ui {
+    padding: 5rem;
+  }
+}
+
+.cs-msg-ui__description {
+  font-family: var(--primaryFont);
+  font-size: var(--font-size-100);
+  margin-top: 1rem;
+  color: var(--paragraph-color);
+}
+
+.cs-msg-ui__button-wraper {
+  margin-top: var(--spacing-400);
+}
+
+.cs-msg-ui button {
+  padding: 1.8rem 3rem;
+  border-radius: 150px;
+  font-family: var(--primaryFont);
+  min-width: 123px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.cs-msg-ui__primary-btn {
+  background-color: #313131;
+  color: #fff;
+  border: none;
+  margin-right: 2rem;
+}
+
+.cs-msg-ui__secondary-btn {
+  color: #000;
+  background-color: transparent;
+  border: 1px solid #313131;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 1030px) {
+  .cs-msg-ui button {
+    padding: 2.6rem 3.2rem;
+    min-width: 190px;
+    font-size: 2.2rem;
+  }
+}
+
+.cs-msg-ui .err {
+  font-size: calc(var(--font-size-100) - .3rem);
+  margin-top: 2rem !important;
+}
+
 .cs-articals-block {
   margin-top: var(--spacing-500);
-  margin-bottom: var(--spacing-500);
+}
+
+.cs-articals-block h2 {
+  margin-top: 0 !important;
 }
 
 .cs-heading {
@@ -176,10 +239,22 @@
 .select-posts {
   background-color: var(--cs-block-bg-color);
   border-radius: var(--border-radius);
-  padding: 5rem;
+  padding: 2rem;
   min-height: 369px;
   border: 1rem solid var(--cs-block-border-color);
   padding: 2rem;
+}
+
+@media screen and (min-width: 588px) {
+  .select-posts {
+    padding: 3rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .select-posts {
+    padding: 5rem;
+  }
 }
 
 @media screen and (min-width: 468px) {
@@ -234,6 +309,47 @@
   }
   .select-posts .err {
     width: 80%;
+  }
+}
+
+.block-config__select-posts {
+  display: -ms-grid;
+  display: grid;
+  row-gap: 1rem;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 810px) {
+  .block-config__select-posts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -webkit-column-gap: 1rem;
+            column-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1224px) {
+  .block-config__select-posts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-column-gap: 1rem;
+            column-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .block-config__select-posts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    -webkit-column-gap: 1rem;
+            column-gap: 1rem;
   }
 }
 

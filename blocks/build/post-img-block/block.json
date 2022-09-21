@@ -1,16 +1,16 @@
 {
-    "apiVersion": 2,
-    "name": "cs/post-image-block",
-    "title": "Article Image Block",
-    "category": "text",
-    "icon": "star",
-    "attributes":{
-        "img":{
-            "type":"object"
-        },
-        "thumbnailImg":{
-            "type":"boolean",
-            "default":false
-        }
+  "apiVersion": 2,
+  "name": "cs/post-image-block",
+  "title": "Article Image Block",
+  "category": "text",
+  "icon": "star",
+  "attributes": {
+    "img": {
+      "type": "object"
+    },
+    "thumbnailImg": {
+      "type": "boolean",
+      "default": false
     }
+  }
 }

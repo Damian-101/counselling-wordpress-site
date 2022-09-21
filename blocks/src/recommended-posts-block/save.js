@@ -14,7 +14,7 @@ const Save = (props) => {
     const renderArticalsUi = () => {
         if (selectedArticals) {
             return (
-                <div className="cs-articals-block" id="cs-articals-block">
+                <div className="cs-articals-block craft-theme" id="cs-articals-block">
                         {/* heading  */}
                         <div className="cs-articals-block__top">
                             <InnerBlocks.Content />
@@ -36,9 +36,6 @@ const Save = (props) => {
     }
     return (
         <div {...blockProps}>
-            {selectedArticals &&
-                renderArticalsUi()
-            }
         </div>
     )
 }

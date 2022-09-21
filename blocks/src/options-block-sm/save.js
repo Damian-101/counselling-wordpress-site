@@ -8,7 +8,7 @@ const Save = (props) => {
     return (
         <>
             <div {...blockprops}>
-                <div className="sm-option-block-sm__content">
+                <div className="sm-option-block-sm__content craft-theme">
                     {!optionImg &&
                         <div className="sm-option-block-sm__top"></div>
                     }

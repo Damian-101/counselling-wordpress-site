@@ -58,9 +58,7 @@ class Counselors_Controller extends Add_Counselors{
         self::$imgUrl = get_post_meta($post->ID,'img-url',true);
         self::$counselorName = get_post_meta($post->ID,'counselor-name',true);
         self::$qualification = get_post_meta($post->ID,'qualification',true);
-        Controller::add_view("counselor-name");
-        Controller::add_view("qualification");
-        Controller::add_view("add-img");
+        Controller::add_view("counselors");
     }
 
 }

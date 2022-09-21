@@ -15,7 +15,7 @@ const Edit = (props) => {
             <Sidebar props={props} />
             <Toolbar props={props} />
             <div {...blockprops}>
-                <div className="sm-option-block-sm__content" data-option-name="options block lg">
+                <div className="sm-option-block-sm__content craft-theme" data-option-name="options block lg">
                     {!optionImg &&
                         <div className="sm-option-block-sm__top"></div>
                     }

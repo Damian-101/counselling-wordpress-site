@@ -22,4 +22,13 @@
     }
   }
   
-
+.add-popup-image{
+  width: 100%;
+  max-width: 217px; 
+  aspect-ratio:1/1;
+  background-color: rgb(87, 87, 87);
+  margin: 2rem 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

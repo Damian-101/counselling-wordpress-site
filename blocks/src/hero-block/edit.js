@@ -24,7 +24,7 @@ const edit = (props) => {
             <Sidebar props={props} />
             <Toolbar props={props} />
             <div {...blockprops}>
-                <section class="cm-hero__content" id="cm_hero">
+                <section class="cm-hero__content craft-theme" id="cm_hero">
                     <div class="container cm-hero__content-wraper" style={{color:textColor}}>
                         <RichText
                             tagName="h5"

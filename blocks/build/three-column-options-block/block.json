@@ -1,9 +1,8 @@
 {
-    "apiVersion": 2,
-    "name": "cs/three-column-options-block",
-    "title": "Three Column Options Block",
-    "category": "text",
-    "icon": "star",
-    "attributes":{
-    }
+  "apiVersion": 2,
+  "name": "cs/three-column-options-block",
+  "title": "Three Column Options Block",
+  "category": "text",
+  "icon": "star",
+  "attributes": {}
 }

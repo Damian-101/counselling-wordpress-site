@@ -73,7 +73,7 @@ const Edit = (props) => {
     const renderArticalsUi = () => {
         return(
             <>           
-            <div class='cs-all-articals-block'>
+            <div class='cs-all-articals-block craft-theme'>
                 <div className=''>
                     <div class='cs-all-articals' id="cs_all_articals">
                     </div>

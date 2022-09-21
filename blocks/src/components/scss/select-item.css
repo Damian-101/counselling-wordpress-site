@@ -1,0 +1,49 @@
+.select-item {
+  background-color: #FFFFFF;
+  min-height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: .1rem solid #A5A5A5;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.select-item .select-item__img {
+  border-radius: .5rem 0 0 .5rem;
+}
+
+.select-item__icon-bg {
+  fill: var(--theme-color);
+}
+
+.select-item__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-right: 2rem;
+  -webkit-transition: opacity 0.06s ease-in-out;
+  transition: opacity 0.06s ease-in-out;
+  margin-left: 1rem;
+}
+
+.select-item__img {
+  width: 78px;
+  height: 100% !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.select-item__name {
+  margin-left: 2rem;
+  font-family: var(--primaryFont);
+  font-size: var(--font-size-100);
+  width: 100%;
+}
+/*# sourceMappingURL=select-item.css.map */

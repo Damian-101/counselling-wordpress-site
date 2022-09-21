@@ -153,7 +153,7 @@ const Edit = (props) => {
         }
         if(optionsCount && data && isCustomerOptionsChanged === false){
             return(
-                <div className="customer-options-block">
+                <div className="customer-options-block craft-theme">
                     <InnerBlocks template={renderOptionsLayout()}/>
                 </div>
             )

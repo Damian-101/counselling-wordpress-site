@@ -1,5 +1,5 @@
 .cm-hero__content {
-  min-height: 50vh;
+  min-height: 65vh;
   background-color: #1d1d1d;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14,8 +14,16 @@
   height: 100%;
 }
 
+.wp-block-cs-hero-block {
+  margin: 0 calc(var(--container) / -1);
+}
+
+.cm-sub__heading {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
 .cm-hero__heading {
-  color: #fff;
   max-width: 535px;
   margin-bottom: 3rem;
   z-index: 3;

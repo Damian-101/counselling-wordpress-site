@@ -6,7 +6,7 @@ const Save = (props) => {
     return(
         <div { ...blockProps }>
                 <div>{oldSavedOptionsCount}</div>
-                <div className='customer-options-block-wraper'>
+                <div className='customer-options-block-wraper craft-theme'>
                     <InnerBlocks.Content />
                 </div>
         </div>

@@ -3,7 +3,6 @@
     width: 210px;
     height: 210px;
     border-radius: 1000px;
-    margin-bottom: 2rem;
     display: grid;
     place-items: center;
     background-repeat: no-repeat;
@@ -14,6 +13,7 @@
 .add-img.button{
     display: block;
     cursor:pointer;
+    margin-top: 2rem;
 }
 
 .add-img:hover{
